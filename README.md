@@ -1,50 +1,55 @@
-# AML images labeling vs labeling in opensource
+# AML Images Labeling VS Labeling In Opensource
 
-#### **Opis**
+### **Opis**
 
-Efektem projektu ma być analiza porównawcza programów, które będą w stanie etykietować obrazy przedstawiające kwiaty względem ich rodzajów. Aplikacje będą opierać się o Azure Machine Learning oraz bibliotekę opensource – Tenserflow.
+Projekt zakłada przegląd narzędzi umożliwiających oznaczanie obrazów. Szczególnej uwadze ma zostać poddany Azure Machine Learning Data Labeling. Omówione poniżej narzędzia, mają za zadanie ułatwienie przygotowania zbiorów danych, po przez ich oznaczenie. Zbiór taki może posłużyć następnie do dalszej analizy, zostać wykorzystany w kolejnym narzędziu lub może posłużyć jako zbiór danych dla uczenia sieci.
 
+### Zespół - grupa *gamma*
 
+- [Mateusz Mizio ](https://github.com/miziom ) - MM
 
-#### Zespół
+- [Jarosław Królik](https://github.com/j-krolik) - JK
 
-- [Mateusz Mizio](https://github.com/miziom )
+### Repozytorium
 
-- [Jarosław Królik](https://github.com/j-krolik)
+Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-Labeling)
 
+### Wybrany stos technologiczny
 
+***Serwis Azure***
 
-#### Opis funkcjonalności
+- Azure Machine Learning - Data Labeling
+  - Image Classification Multi-class
+  - Image Classification Multi-label
+  - Object Identyfication (Bounding Box)
+  - Instance Segmentation (Polygon) (Preview)
 
-Proponujemy program, który na podstawie dołączanych zdjęć będzie dokonywał klasyfikacji rodzaju kwiatów zawartych na zdjęciach. Obrazy będą klasyfikowane dla stokrotek, mleczy, róży, słoneczników oraz tulipanów. Wynik klasyfikacji może być plik o formacie COCO lub JSON.
+***Inne technologie:*** 
 
+- Cvat
+- Label Studio
+- Labelbox
+- Coco Annotator
+- Awesome Data Labeling
+- Yolo_label
 
+### Kalendarz
 
-#### Wybrany stos technologicz
+|  Nr   |                          Działania                           |          Data           |    Kto?    | Check |
+| :---: | :----------------------------------------------------------: | :---------------------: | :--------: | :---: |
+|   1   |   Uzupełnienie stosu technologicznego - co będziemy badać?   |       do 13.12.20       |   MM, JK   |   X   |
+|   2   | Analiza *Azure Machine Learning - Data Labeling* (uszczególnienie) |       do 20.12.20       |   MM, JK   |   X   |
+|   3   |       Przygotowanie zbioru danych potrzebnego do pracy       |       do 22.12.20       |   MM, JK   |   X   |
+| **4** |                    **Przerwa Świąteczna**                    | **23.12.20 - 01.01.21** | **MM, JK** | **X** |
+|   5   |               Analiza *Azure Machine Learning*               |       do 10.01.20       |     MM     |   X   |
+|   6   |                                                              |                         |            |       |
+|   7   |                                                              |                         |            |       |
+|   8   |                                                              |                         |            |       |
+|   9   |                                                              |                         |            |       |
+|  10   |                                                              |                         |            |       |
 
-*Serwis Azure*
+### Opis funkcjonalności i schematy działania
 
-- Azure Machine Learning
+1. ##### Azure Machine Learning - Data Labeling
 
-*Inne technologie:* 
-
-- Python
-- Tensorflow
-
-
-
-#### Schemat działania
-
-In progress...
-
-
-
-#### Architektura
-
-In progress...
-
-
-
-#### Kalendarz
-
-In progress...
+   
