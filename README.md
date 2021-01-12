@@ -131,13 +131,13 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
        ![2_vm_dedicated_recommended](aml-screens/2_vm_dedicated_recommended.PNG)
 
-       ![](AML - screens\4_vm_dedicated_all.PNG)
+       ![](aml-screens\4_vm_dedicated_all.PNG)
 
      - wszystkimi opcjami
 
        Poniżej przedstawiono dostępne polecane VM dla rekomendowanych rozmiarów oraz pozostałych. Tu również możliwości maszyn przekładają się na ceny jednak są znacznie tańsze względem *polecanych*. Jeżeli jednak chcemy zaoszczędzić pieniądze lub nie zależy nam na ciągłości pracy Maszyny Wirtualnej, jest to odpowiednia opcja 
 
-       ![](AML - screens\3_vm_low_recommended.PNG)
+       ![](aml-screens\3_vm_low_recommended.PNG)
 
        ![](AML - screens\5_vm_low_all.PNG)
 
