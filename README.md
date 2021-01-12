@@ -135,11 +135,11 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
      - wszystkimi opcjami
 
-       Poniżej przedstawiono dostępne polecane VM dla rekomendowanych rozmiarów oraz pozostałych. Tu również możliwości maszyn przekładają się na ceny jednak są znacznie tańsze względem *polecanych*. Jeżeli jednak chcemy zaoszczędzić pieniądze lub nie zależy nam na ciągłości pracy Maszyny Wirtualnej, jest to odpowiednia opcja 
+       Poniżej przedstawiono dostępne polecane VM dla rekomendowanych rozmiarów oraz pozostałych. Tu również możliwości maszyn przekładają się na ceny jednak są znacznie tańsze względem *polecanych*. Jeżeli jednak chcemy zaoszczędzić pieniądze lub nie zależy nam na ciągłości pracy Maszyny Wirtualnej, jest to odpowiednia opcja.
 
-       ![](aml-screens\3_vm_low_recommended.PNG)
+       ![3_vm_low_recommended](aml-screens/3_vm_low_recommended.PNG)
 
-       ![](AML - screens\5_vm_low_all.PNG)
+       ![](aml-screens/5_vm_low_all.PNG)
 
      Ze względu na ustalony limit 6 rdzeni, jak można zauważyć powyżej, wiele maszyn nie może zostać nam udostępnionych. Limity wprowadzane są ze względu na to, aby nie przekroczyć budżetu oraz przestrzegać ograniczeń pojemności platformy Azure. Ze względu na to, że konto Azure na subskrypcji studenta posiada $100 kredytów,  wiele VM zostało zablokowanych, ponieważ użycie ich spowodowałoby szybkie zużycie środków.
 
@@ -149,7 +149,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
        Początkowo należy ręcznie oznaczyć około 100 obrazów, aby pracę rozpoczął Machnie Learning. Po około 350-500 oznaczonych obrazach dostępne są kolejne etapy.
 
-       ![](AML - screens\gifs\manual.gif)
+       ![](aml-screens/gifs/manual.gif)
 
      - **etap klastrowania** - nie występuje w projektach wykrywania obiektów 
 
@@ -157,7 +157,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
        Po wstępnym wytrenowaniu modelu na danych oznaczonych ręcznie, model jest ograniczany do ostatniej w pełni połączonej warstwy. Obrazy bez etykiety są następnie przepuszczane przez wycięty/ograniczony model w procesie znanym jako cechowanie (featurization). To umieszcza każdy obraz w wielowymiarowej przestrzeni zdefiniowanej przez tę warstwę modelu. Obrazy, które są najbliższymi sąsiadami w przestrzeni, są używane do zadań grupowania.
 
-       ![](AML - screens\gifs\clustered.gif)
+       ![](aml-screens/gifs/clustered.gif)
 
      - **etap wstępnego oznaczania**
 
@@ -165,7 +165,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
        Po przeszkoleniu modelu uczenia maszynowego na danych oznaczonych ręcznie, model jest oceniany na zestawie testowym ręcznie oznaczonych obrazów w celu określenia jego dokładności przy różnych progach ufności. Ten proces oceny służy do określenia progu ufności, powyżej którego model jest wystarczająco dokładny, aby pokazać wstępne etykiety. Model jest następnie oceniany na podstawie nieznakowanych danych. Obrazy z przewidywaniami bardziej wiarygodnymi niż ten próg są używane do wstępnego etykietowania.
 
-       ![](AML - screens\gifs\prelabeled.gif)
+       ![](aml-screens/gifs/prelabeled.gif)
 
      Kiedy etykietowanie wspomagane ML jest włączone, na ekranie podsumowującym projekt pokazywany jest szereg informacji. Mały pasek postępu pokazuje, kiedy nastąpi następny trening. Możemy podejrzeć ile zdjęć zostało przypisanych do danych etapów, jak rozkładają się poszczególne etykiety oraz ile oznaczeń wykonali poszczególni tagujący.
 
@@ -175,7 +175,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
        Odpowiada za naukę modelu przewidywania etykiet. Wykonywany jest wielokrotnie podczas trwania projektu. Dla każdego treningu wyznaczana jest dokładność jak i precyzja. Proces ten jest o tyle fascynujący, że reagują na bieżące postępy projektu. Jeżeli jesteśmy na etapie *wstępnego oznaczania* to nawet jeżeli nic nie będziemy zmieniać tylko potwierdzać przypuszczenia i oznaczenia modelu, to zatwierdzone przez nas wyniki będą  wykorzystane do kolejnych treningów. Wtedy występuje sytuacja, że model uczy się w pełni sam i poprawia swoje wyniki. 
 
-       ![](AML - screens\7_traning_runs.PNG)
+       ![](aml-screens/7_traning_runs.PNG)
 
      - *validation*
 
@@ -189,20 +189,20 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
        Odpowiada za elementy klastrów. Umieszczane są obrazy w przestrzeni zdefiniowanej przez warstwę obciętego modelu. Obrazy, które są najbliższymi sąsiadami w przestrzeni, są używane do zadań grupowania.
 
-     ![](AML - screens\6_dashboard.PNG)
+     ![](aml-screens/6_dashboard.PNG)
 
      
 
      Narzędzie umożliwia utworzenie **4 rodzajów projektów**:
 
-     ![](AML - screens\1_task_type.PNG)
+     ![](aml-screens/1_task_type.PNG)
 
      - **Image Classification Multi-class**
 
        Projekt, który umożliwia oznaczenie obrazu tylko jedną klasą z zestawu klas. 
        Obejmuje wszystkie omówione wcześniej 3 etapy.
 
-       ![](AML - screens\16_work_multiclass.PNG)
+       ![](aml-screens/16_work_multiclass.PNG)
 
        W doświadczeniach przejście do 2 etapu następowało przy oznaczeniu około 400-450 obrazów. Po przejściu do etapy *klastrowania*, aby jak najszybciej osiągnąć etap *wstępnego oznaczania* wystarczyło oznaczyć 100-200 zgrupowanych obrazów i poczekać, aż ruszy kolejny trening. Wtedy to liczba zdjęć *wstępnie oznaczonych* ulega zwiększeniu, a kiedy my dodatkowo potwierdzimy poprawność oznaczeń, wpłynie to pozytywnie na wyniki kolejnych treningów.
 
@@ -212,17 +212,17 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
          Takie rozwiązanie może w łatwy sposób umożliwić użycie naszego zbioru w kolejnych serwisach.
 
-         ![](AML - screens\8_multiclass_dataset.PNG)
+         ![](aml-screens/8_multiclass_dataset.PNG)
 
        - coco
 
          Plik wynikowy jest w formacie wynikowym, gdzie na początku pliku mamy opisane nasz zbiór danych:
 
-         ![](AML - screens\9_multiclass_coco1.PNG)
+         ![](aml-screens/9_multiclass_coco1.PNG)
 
          Następnie zapisane są oznaczenia:
 
-         ![](AML - screens\9_multiclass_coco2.PNG)
+         ![](aml-screens/9_multiclass_coco2.PNG)
 
        - ***OCENA DZIAŁANIA - 5/5*** 
 
@@ -234,7 +234,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
        Przejście do drugiego etapu wymaga oznaczenie standardowo około 400-450 zdjęć. Pierwsze treningi i propozycje grupowania obrazów zdają się działać na tyle źle, że ciężko odróżnić dobór zdjęć w etapie grupowania od zdjęć w etapie ręcznego oznaczania. Po oznaczeniu w sumie ok 900-1000 zdjęć, zaobserwowano faktyczne grupowanie obrazów. Początkowo na 6/9 obrazach można było wyszukać wspólną klasę jednak podpowiedzi modelu były bardzo nieintuicyjne. Po osiągnięciu 1200 oznaczonych obrazów, klastrowanie przebiegało falowo. Kilka siatek 9 obrazów z bardzo dobrze wyselekcjonowanymi zdjęciami, po czym wiele siatek ze średnio pogrupowanymi obrazami.
 
-       ![](AML - screens\17_work_multilabel.PNG)
+       ![](aml-screens/17_work_multilabel.PNG)
 
        Podczas testów nie udało się osiągnąć etapu *wstępnego oznaczania*. Może mieć to wiele przyczyn, zaczynając od niejasnego zbioru danych, kończąc na błędach w oznaczaniu lub niedokładnym oznaczaniem obrazów. Brak osiągnięcia tego etapu może być również skutkiem tego, że trenowane modele nie do końca dobrze radzą sobie z problemem oznaczanie obrazów wieloma klasami.  Dla jednej klasy (poprzedni rodzaj projektu) wychodzi to świetnie.
 
@@ -244,13 +244,13 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
        - dataset
 
-         ![](AML - screens\10_multilabel_dataset.PNG)
+         ![](aml-screens/10_multilabel_dataset.PNG)
 
        - coco
 
-         ![](AML - screens\11_multilabel_coco1.PNG)
+         ![](aml-screens/11_multilabel_coco1.PNG)
 
-         ![](AML - screens\11_multilabel_coco2.PNG)
+         ![](aml-screens/11_multilabel_coco2.PNG)
 
          - ***OCENA DZIAŁANIA - 4/5*** 
 
@@ -262,7 +262,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
        Po początkowym ręcznym oznaczeniu 400-500 zdjęć, następuje przejście do etapu *wstępnego oznaczania*. W tym podejściu nie ma etapu klastrowania. ML oznacza elementy i radzi sobie z tym bardzo dobrze. 
 
-       ![](AML - screens\18_work_obj.PNG)
+       ![](aml-screens/18_work_obj.PNG)
 
        Naturalnie im lepiej zostaną oznaczone początkowe obrazy, tym w lepszy sposób tagowane są kolejne oraz tym szybciej można osiągnąć etap *wstępnego oznaczania*.
 
@@ -272,7 +272,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
        - dataset
 
-         ![](AML - screens\12_obj_ident.PNG)
+         ![](aml-screens/12_obj_ident.PNG)
 
        - coco
 
@@ -287,9 +287,9 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
          ]
          ```
 
-         ![](AML - screens\13_obj_ident_coco1.PNG)
+         ![](aml-screens/13_obj_ident_coco1.PNG)
 
-         ![](AML - screens\13_obj_ident_coco2.PNG)
+         ![](aml-screens/13_obj_ident_coco2.PNG)
 
          - ***OCENA DZIAŁANIA - 5/5***
 
@@ -299,21 +299,21 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
          Jest to format który nie wspiera Azure Machine Learning. Umożliwia oznaczanie obrazów w o wile bardziej dokładny sposób. Jednak brak ML, który by wspierał proces sprawia, że jest to tylko porządny edytor do oznaczania zdjęć.
 
-         ![](AML - screens\19_work_poly.PNG)
+         ![](aml-screens/19_work_poly.PNG)
 
          Standardowe uzyskanie wyników:
 
          - dataset
 
-           ![](AML - screens\14_poly_dataset.PNG)
+           ![](aml-screens/14_poly_dataset.PNG)
 
          - coco
 
            Oprócz oznaczenia ogólnego po przez *bbox*, mamy oznaczoną segmentację. Zapisane są tam wszystkie wierzchołki, które tworzą dany obszar po przez pary wartości X oraz Y.
 
-           ![](AML - screens\15_poly_coco1.PNG)
+           ![](aml-screens/15_poly_coco1.PNG)
 
-           ![](AML - screens\15_poly_coco2.PNG)
+           ![](aml-screens/15_poly_coco2.PNG)
 
            - ***OCENA DZIAŁANIA - 3.5/5***
 
