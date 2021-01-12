@@ -131,7 +131,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
        ![2_vm_dedicated_recommended](aml-screens/2_vm_dedicated_recommended.PNG)
 
-       ![](aml-screens\4_vm_dedicated_all.PNG)
+       ![4_vm_dedicated_all](aml-screens/4_vm_dedicated_all.PNG)
 
      - wszystkimi opcjami
 
