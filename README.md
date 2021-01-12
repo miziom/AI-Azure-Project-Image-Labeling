@@ -348,6 +348,6 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
 3. ##### Google Cloud AI Platform Data Labeling Service
 
-   Niestety nie mogliśmy przetestować tej usługi, ponieważ została zablokowana z powodu pandemi.
+   Niestety nie mogliśmy przetestować tej usługi, ponieważ została zablokowana z powodu pandemii.
 
-   ![](not-work\google.PNG)
+   ![](not-work/google.PNG)
