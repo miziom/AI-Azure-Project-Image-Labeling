@@ -375,6 +375,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
    Struktura pliku dla oznaczonego zdjęcia wygląda następująco:
 
    > 0 0.252392 0.540074 0.431818 0.535142
+   >
    > 0 0.739234 0.471640 0.504785 0.585697
 
    - *<u>**OCENA DZIAŁANIA - 2/5**</u>*
