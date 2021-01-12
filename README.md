@@ -129,7 +129,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
        Poniżej przedstawiono dostępne polecane VM dla rekomendowanych rozmiarów oraz pozostałych. Jak widać w zależności od możliwości Maszyny zmienia się jej cena pracy za godzinę. 
 
-       ![a](AML - screens/2_vm_dedicated_recommended.PNG)
+       ![](AML - screens/2_vm_dedicated_recommended.png)
 
        ![](AML - screens\4_vm_dedicated_all.PNG)
 
