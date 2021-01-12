@@ -331,7 +331,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
    - ZALETY
 
      - przyspieszenie procesu oznaczania zbioru obrazów
-     - możliwość pracy w grupie na jednym zbierze
+     - możliwość pracy w grupie na jednym zbiorze
      - zarządzanie projektem i śledzenie postępów
      - dynamiczne powiększanie zbioru wejściowego
      - wsparcie Azure Machine Learning
