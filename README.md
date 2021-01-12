@@ -316,9 +316,9 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
            ![](aml-screens/15_poly_coco2.PNG)
 
-           - ***OCENA DZIAŁANIA - 3.5/5***
+   - ***OCENA DZIAŁANIA - 3.5/5***
 
-             Jest to dobry edytor, który co najważniejsze umożliwia pracę w zespole nad jednym zbiorze danych. Ze względu na brak wsparcia AML, nie można ocenić go lepiej. Samo korzystanie z narzędzia jest bardzo intuicyjne. 
+     Jest to dobry edytor, który co najważniejsze umożliwia pracę w zespole nad jednym zbiorze danych. Ze względu na brak wsparcia AML, nie można ocenić go lepiej. Samo korzystanie z narzędzia jest bardzo intuicyjne. 
 
    - ***<u>WNIOSKI</u>***
 
@@ -329,7 +329,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
      - Im bardziej zrównoważony zbiór (porównywalne ilości przedstawicieli z każdej klasy), tym cały proces przebiega bardziej płynnie i szybko
      -  Po stworzeniu projektu, jesteśmy w stanie dodatkowo rozdzielić proces **trenowania** oraz **prognozowania** na dwie oddzielne maszyny wirtualna - domyślnie pracują na tej samej, wyznaczonej przy tworzeniu projektu.
 
-   - ZALETY
+   - <u>***ZALETY***</u>
 
      - przyspieszenie procesu oznaczania zbioru obrazów
      - możliwość pracy w grupie na jednym zbiorze
@@ -338,7 +338,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
      - wsparcie Azure Machine Learning
      - Multi-class Image Classification oraz Object Identyfication
 
-   - WADY
+   - <u>***WADY***</u>
 
      - trudno w pełni określić koszty, można tylko szacować
      - Multi-label Image Classificatication oraz Instance Segmentation
@@ -346,7 +346,49 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
 2. ##### dasdddasd
 
-3. ##### Google Cloud AI Platform Data Labeling Service
+3. ##### Yolo_label
+
+   Proste narzędzie do oznaczenia zbioru danych. Pliki wyjściowe są w formacie .txt, a oznaczenia są w formacie YOLO. Oznacza to, że każda linia w pliku opisuje pojedynczy oznaczony obiek:
+
+   ```
+   NUMER_KLASY X_MIN Y_MIN SZEROKOŚĆ WYSOKOŚĆ
+   ```
+
+   Wartości określające pozycje zdjęcia występują w postaci znormalizowanej - z przedziału <0, 1>. Pliki wyjściowe otrzymują nazwę pokrywającą się z nazwą oznaczanego zdjęcia.
+
+   W celu skorzystania z programu, należy pobrać go ([LINK](https://drive.google.com/file/d/1lanO8SyY2QlbVCbOR0LlwQjQYbhoteTd/view)), a następnie uruchomić *YoloLabel.exe*. Po uruchomieniu należy wybrać folder, w którym powinny znajdować się **tylko i wyłącznie** zdjęcia do oznaczenia. Następnie należy wczytać plik z nazwami poszczególnych klas, w postaci pliki *.txt* lub *.names*. Wewnątrz niego w pojedynczych liniach powinny znajdować się nazwy klas:
+
+   > daisy
+   >
+   > rose
+   >
+   > sunflower
+
+   Następnie należy oznaczać poszczególne zdjęcia:
+
+   ![](yolo-label/in_work.PNG)
+
+   W folderze ze zdjęciami tworzone są pliki z oznaczeniami:
+
+   ![](yolo-label/txt_files.PNG)
+
+   Struktura pliku dla oznaczonego zdjęcia wygląda następująco:
+
+   > 0 0.252392 0.540074 0.431818 0.535142
+   > 0 0.739234 0.471640 0.504785 0.585697
+
+   - *<u>**OCENA DZIAŁANIA - 2/5**</u>*
+
+     Jest to proste narzędzie jednak ograniczone. Pozwala na jeden format wynikowy (zgodny z YOLO) oraz nie pozwala na pracę grupową. 
+
+   - ***<u>ZALETY</u>***
+     - Intuicyjna obsługa
+     - prosta instalacja
+   - ***<u>WADY</u>***
+     - brak wsparcia Machine Learning
+     - brak możliwości pracy w grupie 
+
+4. ##### Google Cloud AI Platform Data Labeling Service
 
    Niestety nie mogliśmy przetestować tej usługi, ponieważ została zablokowana z powodu pandemii.
 
