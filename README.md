@@ -32,6 +32,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 - Coco Annotator
 - Awesome Data Labeling
 - Yolo_label
+- *Google Cloud AI Platform Data Labeling Service* - niedostępny
 
 ***Pochodzenie zbiorów danych***
 
@@ -343,5 +344,10 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
      - Multi-label Image Classificatication oraz Instance Segmentation
      - nie ma możliwości powrotu do raz pominiętego obrazu 
 
-2. ##### asddd
+2. ##### dasdddasd
 
+3. ##### Google Cloud AI Platform Data Labeling Service
+
+   Niestety nie mogliśmy przetestować tej usługi, ponieważ została zablokowana z powodu pandemi.
+
+   ![](E:\STUDIA - MGR\sem2\Azure\PROJEKT\AI-Azure-Project-Image-Labeling\not-work\google.PNG)
