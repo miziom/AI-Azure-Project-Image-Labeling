@@ -350,4 +350,4 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
    Niestety nie mogliśmy przetestować tej usługi, ponieważ została zablokowana z powodu pandemi.
 
-   ![](E:\STUDIA - MGR\sem2\Azure\PROJEKT\AI-Azure-Project-Image-Labeling\not-work\google.PNG)
+   ![](not-work\google.PNG)
