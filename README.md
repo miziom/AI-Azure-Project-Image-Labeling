@@ -41,18 +41,17 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
 ### Kalendarz
 
-|  Nr   |                          Działania                           |          Data           |    Kto?    | Check |
-| :---: | :----------------------------------------------------------: | :---------------------: | :--------: | :---: |
-|   1   |   Uzupełnienie stosu technologicznego - co będziemy badać?   |       do 13.12.20       |   MM, JK   |   X   |
-|   2   | Analiza *Azure Machine Learning - Data Labeling* (uszczególnienie) |       do 20.12.20       |   MM, JK   |   X   |
-|   3   |       Przygotowanie zbioru danych potrzebnego do pracy       |       do 22.12.20       |   MM, JK   |   X   |
-| **4** |                    **Przerwa Świąteczna**                    | **23.12.20 - 01.01.21** | **MM, JK** | **X** |
-|   5   |               Analiza *Azure Machine Learning*               |       do 10.01.20       |     MM     |   X   |
-|   6   |                      Analiza Yolo_label                      |       do 10.01.20       |     MM     |   X   |
-|   7   |       Analiza Awesome Data Labeling - Kili Technology        |       do 13.01.20       |     MM     |   X   |
-|   8   |                                                              |                         |            |       |
-|   9   |                                                              |                         |            |       |
-|  10   |                                                              |                         |            |       |
+|  Nr   |                        Działania                         |          Data           |    Kto?    | Check |
+| :---: | :------------------------------------------------------: | :---------------------: | :--------: | :---: |
+|   1   | Uzupełnienie stosu technologicznego - co będziemy badać? |       do 20.12.20       |   MM, JK   |   X   |
+|   2   |     Przygotowanie zbioru danych potrzebnego do pracy     |       do 22.12.20       |   MM, JK   |   X   |
+| **3** |                  **Przerwa Świąteczna**                  | **23.12.20 - 01.01.21** | **MM, JK** | **X** |
+|   4   |             Analiza *Azure Machine Learning*             |       do 10.01.20       |     MM     |   X   |
+|   5   |                   Analiza *Yolo_label*                   |       do 10.01.20       |     MM     |   X   |
+|   6   |    Analiza *Awesome Data Labeling - Kili Technology*     |       do 13.01.20       |     MM     |   X   |
+|   7   |                                                          |                         |            |       |
+|   8   |                                                          |                         |            |       |
+|   9   |                                                          |                         |            |       |
 
 ### Opis funkcjonalności i schematy działania
 
