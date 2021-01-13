@@ -18,11 +18,11 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
 ***Serwis Azure***
 
-- Azure Machine Learning - Data Labeling
-  - Image Classification Multi-class
-  - Image Classification Multi-label
-  - Object Identyfication (Bounding Box)
-  - Instance Segmentation (Polygon) (Preview)
+- [Azure Machine Learning - Data Labeling](#Azure-Machine-Learning---Data-Labeling)
+  - [Image Classification Multi-class](#Image-Classification-Multi-class)
+  - [Image Classification Multi-label](#Image-Classification-Multi-label)
+  - [Object Identyfication (Bounding Box)](#Object-Identyfication-(Bounding-Box))
+  - [Instance Segmentation (Polygon) (Preview)](#Instance-Segmentation-(Polygon)-(Preview))
 
 ***Inne technologie:*** 
 
@@ -31,8 +31,8 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 - Labelbox
 - Coco Annotator
 - [Awesome Data Labeling - Kili Technology](#Awesome-Data-Labeling---Kili-Technology)
-- Yolo_label
-- *Google Cloud AI Platform Data Labeling Service* - niedostępny
+- [Yolo_label](#Yolo_label)
+- [*Google Cloud AI Platform Data Labeling Service* - niedostępny](#Google-Cloud-AI-Platform-Data-Labeling-Service)
 
 ***Pochodzenie zbiorów danych***
 
