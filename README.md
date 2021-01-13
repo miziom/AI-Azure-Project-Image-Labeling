@@ -30,7 +30,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 - Label Studio
 - Labelbox
 - Coco Annotator
-- Awesome Data Labeling
+- [Awesome Data Labeling - Kili Technology](#Awesome-Data-Labeling---Kili-Technology)
 - Yolo_label
 - *Google Cloud AI Platform Data Labeling Service* - niedostępny
 
@@ -56,7 +56,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
 ### Opis funkcjonalności i schematy działania
 
-1. ##### Azure Machine Learning - Data Labeling
+1. ### Azure Machine Learning - Data Labeling
 
    Narzędzie to jest miejscem do tworzenia i monitorowania projektów etykietowania oraz zarządzania nimi po przez:
 
@@ -198,7 +198,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
      ![](aml-screens/1_task_type.PNG)
 
-     - **Image Classification Multi-class**
+     - ##### **Image Classification Multi-class**
 
        Projekt, który umożliwia oznaczenie obrazu tylko jedną klasą z zestawu klas. 
        Obejmuje wszystkie omówione wcześniej 3 etapy.
@@ -229,7 +229,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
          AML Data Labeling w tym rodzaju projektu bardzo dobrze radzi sobie z przyporządkowywaniem obrazów do poszczególnych klas. Oznaczenie dużych zbiorów obrazów przebiega bardzo szybko i przyjemnie. Fascynującym aspektem jest to, że kiedy model wstępnie oznaczy nam obrazy a my go będziemy utwierdzać w jego predykcjach, nasza praca ograniczy się wyłącznie do klikania przycisku *PRZEŚLIJ*. 
 
-     - **Image Classification Multi-label**
+     - ##### **Image Classification Multi-label**
 
        Projekt ten umożliwia oznaczenie obrazów wieloma klasami z zestawu klas. Obejmuje wszystkie omówione wcześniej 3 etapy.
 
@@ -257,7 +257,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
            AML dla tego projektu jest na pewno ułatwieniem w procesie oznaczania zdjęć. Ogromny wpływ na otrzymane wyniki ma zbiór danych oraz jego wstępne oznaczanie. Warto używać go dla projektów, gdzie trzeba oznaczyć tysiące zdjęć. W przypadku o ilości mniejszej niż 1000, nie ma sensu używać tego rodzaju projektu.
 
-     - **Object Identyfication (Bounding Box)**
+     - ##### **Object Identyfication (Bounding Box)**
 
        Umożliwia przypisywania klasy oraz zdefiniowania obwiedni, czyli określenia dokładnego położenia reprezentanta danej klasy.
 
@@ -296,7 +296,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
            Narzędzie to w znaczny sposób poprawia pracę nad oznaczaniem zbioru. Jeżeli mamy odpowiednie fundusze oraz mały zespół oraz zbiór liczący tysiące elementów, możemy poświęcić część zbioru. Możemy oznaczyć początkowe obrazy sposobem mniej dokładnym oraz oznaczać tylko elementy wyraźne i znaczące. Modelowi wystarczy to do treningu, po czym sam będzie proponował dokładniejsze oznaczenia. 
 
-       - **Instance Segmentation (Polygon) (Preview)**
+       - ##### **Instance Segmentation (Polygon) (Preview)**
 
          Jest to format który nie wspiera Azure Machine Learning. Umożliwia oznaczanie obrazów w o wile bardziej dokładny sposób. Jednak brak ML, który by wspierał proces sprawia, że jest to tylko porządny edytor do oznaczania zdjęć.
 
@@ -332,21 +332,144 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
    - <u>***ZALETY***</u>
 
      - przyspieszenie procesu oznaczania zbioru obrazów
-     - możliwość pracy w grupie na jednym zbiorze
+     - możliwość pracy w grupie na jednym zbiorze - określanie dostępów dla współużytkowników
      - zarządzanie projektem i śledzenie postępów
      - dynamiczne powiększanie zbioru wejściowego
      - wsparcie Azure Machine Learning
      - Multi-class Image Classification oraz Object Identyfication
+     - niski próg wejścia
+     - prosty i szybki eksport wyników
+     - obsługa zbiorów do 500 000 obrazów
 
    - <u>***WADY***</u>
 
-     - trudno w pełni określić koszty, można tylko szacować
+     - trudno w pełni określić koszty, można "tylko" szacować
      - Multi-label Image Classificatication oraz Instance Segmentation
      - nie ma możliwości powrotu do raz pominiętego obrazu 
 
-2. ##### dasdddasd
+2. ### dasdddasd
 
-3. ##### Yolo_label
+3. ### Awesome Data Labeling - Kili Technology
+
+   *[Kili Technology](https://kili-technology.com/)* to narzędzie do adnotacji obrazu, tekstu i głosu, zaprojektowane, aby pomóc firmom w szybszym wdrażaniu aplikacji uczenia maszynowego.
+
+   Podobnie jak w *AML Data Labeling* podczas tworzenia projektu wybieramy jego typ, definiujemy zbiór danych oraz definiujemy jego opis. Możemy również zdefiniować instrukcje, która pozwoli osobom osobom etykietującym na poprawne i efektywne oznaczanie oraz zdefiniuje działania w przypadku braku pomysłu na oznaczenia zdjęcia.
+
+   Poniżej przedstawiono wyexportowany plik z damymi JSON, który jest tworzony dla formatu Google API:
+
+   ```
+   [
+       {
+           "content": "https://cloud.kili-technology.com/api/label/v2/files?id=709e1512-a3cd-47aa-ba77-653eeda315dc",
+           "externalId": "5547758_eea9edfd54_n.jpg",
+           "id": "ckjvguag611890k9ods1yhwnz",
+           "jsonMetadata": {},
+           "labels": [
+               {
+                   "author": {
+                       "email": "mmizio1997mmizii@gmail.com",
+                       "id": "ckjvczqg301j80j96ax5nda8w",
+                       "name": "mmizio1997mmizii@gmail.com"
+                   },
+                   "createdAt": "2021-01-13T13:38:20.359Z",
+                   "isLatestLabelForUser": false,
+                   "jsonResponse": {
+                       "JOB_0": {
+                           "annotations": [
+                               {
+                                   "boundingPoly": [
+                                       {
+                                           "normalizedVertices": [
+                                               {
+                                                   "x": 0,
+                                                   "y": 1
+                                               },
+                                               {
+                                                   "x": 0,
+                                                   "y": 0.22185366745783675
+                                               },
+                                               {
+                                                   "x": 0.7795453452522922,
+                                                   "y": 0.22185366745783675
+                                               },
+                                               {
+                                                   "x": 0.7795453452522922,
+                                                   "y": 1
+                                               }
+                                           ]
+                                       }
+                                   ],
+                                   "categories": [
+                                       {
+                                           "confidence": 100,
+                                           "name": "DAISY"
+                                       }
+                                   ],
+                                   "mid": "2021011314380570-11249",
+                                   "score": null,
+                                   "type": "rectangle"
+                               }
+                           ]
+                       }
+                   },
+                   "labelType": "DEFAULT",
+                   "modelName": null,
+                   "skipped": false
+               },
+   ```
+
+   Dzięki dobrze zaprojektowanym widokom, sama praca osób etykietujących jest znacznie szybsza, niż w przypadku prostych narzędzi. Aby ją przyspieszyć, można skorzystać z **integracji z Machine Learning**. Aby to zrobić, należy posiadać swój wytrenowany model. W celu połączenia się z narzędziem, naelży wygenerować klucz API, który umożliwi integracje naszej maszyny ze środowiskiem Kili. W celu ułatwienia procesu integracji twórcy narzędzia stworzyli pomoce w postaci skryptów w google colab. Pod [linkiem](https://colab.research.google.com/github/kili-technology/kili-playground/blob/master/recipes/transfer_learning_with_yolo.ipynb) możemy zobaczyć skrypt, który można zaadoptować do własnych celów i modeli. Serwis Kili Technology umożliwia obsługę narzędzia z poziomu Python. W [dokumentacji](https://cloud.kili-technology.com/docs/introduction/introduction-to-kili-technology.html) można sprawdzić nie tylko to w jaki sposób korzystać z samego narzędzie z poziomu serwisu, ale również poradniki i przykładowe skrypty do adaptacji, które umożliwiają integracji np. z Machine Learninig.
+
+   Naturalnie, jeżeli ktoś ma za zadanie oznaczyć nieduży zbiór, to nie skorzysta ze wsparcia ML, ponieważ dla wytrenowania modelu również potrzeba oznaczyć inny zbiór oraz poświęcić czas i zasoby na wytrenowanie go. Jeżeli jednak zadaniem jest oznaczenie wiele tysięcy zdjęć, wtedy warto rozważyć to rozwiązanie. Warto podkreślić, że próg wejścia do tej integracji jest względnie wysoki, ponieważ trzeba wiedzieć jakich sieci oraz w jaki sposób użyć. Jednak po stworzeniu takiego pytania nasuwa się pytanie: **po co korzystać z tego serwisu, kiedy mam własny model, który robi to bez jego pośrednictwa?**
+
+   Dla oznaczania obrazów umożliwia utworzenie 5 rodzajów projektów:
+
+   - **Image Classification (single-class)**
+
+     Umożliwia określenie zestawu klas oraz przyporządkowywanie jednej klasy do jednego zdjęcia.
+
+     ![](kili/single-class.gif)
+
+   - **Image Classification (multi-class)**
+
+     Umożliwia określenie zestawu klas oraz przyporządkowywanie wielu klas do jednego zdjęcia.
+
+     ![](kili/multi-class.gif)
+
+   - **Image Object Detection (bounding box)**
+
+     Umożliwia oznaczanie konkretnych obszarów na obrazie oraz zdefiniowanymi klasami. Obszar jest w kształcie prostokąta.
+
+     ![](kili/bbox.gif)
+
+   - **Image Object Detection (polygon)**
+
+     Umożliwia oznaczanie konkretnych obszarów na obrazie oraz zdefiniowanymi klasami. Obszar tworzą oznaczone punkty, które stają się wierzchołkami utworzonej figury.
+
+     ![](kili/polygon.gif)
+
+   - **Image Object Detection (semantic)**
+
+     Umożliwia oznaczanie konkretnych obszarów na obrazie oraz zdefiniowanymi klasami. Obszar jest definiowany w sposób ciągły, co pozwala na szybkie
+
+     ![](kili\semantic.gif)
+
+   - *<u>**OCENA - 4/5**</u>*
+
+     Narzędzie w prosty sposób może przyspieszyć proces etykietowania danych. Umożliwia wsparcie Machine Learningu, jednak musimy posiadać własny model i dołączyć go do procesu w celu wstępnego dodania adnotacji. Intuicyjne interfejsy oraz możliwość pracy w grupie nad zbiorem
+
+   - ***<u>ZALETY</u>***
+     - łatwe dodanie danych po przez "przeciągnij i upuść"
+     - monitorowanie jakości produkcji za pomocą wskaźników
+     - export danych do pliku JSON dla formatu Google API
+     - możliwość pracy w grupach oraz zarządzanie uczestnikami - role i obowiązki
+     - darmowe narzędzie
+   - ***<u>WADY</u>***
+     - konieczność posiadania własnego modelu w celu wsparci ML
+     - w przypadku użycia ML - względnie wysoki próg wejścia
+     - przy jednokrotnym ładowanie do zbioru możemy dodawać do 500 obrazów, ale dany zbiór możemy poszerzać wielokrotnie
+
+4. ### Yolo_label
 
    Proste narzędzie do oznaczenia zbioru danych. Pliki wyjściowe są w formacie .txt, a oznaczenia są w formacie YOLO. Oznacza to, że każda linia w pliku opisuje pojedynczy oznaczony obiek:
 
@@ -366,7 +489,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
    Następnie należy oznaczać poszczególne zdjęcia:
 
-   ![](yolo-label/in_work.PNG)
+   ![](yolo-label/yolo.gif)
 
    W folderze ze zdjęciami tworzone są pliki z oznaczeniami:
 
@@ -385,11 +508,13 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
    - ***<u>ZALETY</u>***
      - Intuicyjna obsługa
      - prosta instalacja
+     - darmowa aplikacja
+     - niski próg wejścia
    - ***<u>WADY</u>***
      - brak wsparcia Machine Learning
      - brak możliwości pracy w grupie 
 
-4. ##### Google Cloud AI Platform Data Labeling Service
+5. ### Google Cloud AI Platform Data Labeling Service
 
    Niestety nie mogliśmy przetestować tej usługi, ponieważ została zablokowana z powodu pandemii.
 
