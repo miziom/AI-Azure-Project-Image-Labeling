@@ -21,7 +21,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 - [Azure Machine Learning - Data Labeling](#Azure-Machine-Learning---Data-Labeling)
   - [Image Classification Multi-class](#Image-Classification-Multi-class)
   - [Image Classification Multi-label](#Image-Classification-Multi-label)
-  - [Object Identyfication - Bounding Box)](#Object-Identyfication---Bounding-Box)
+  - [Object Identyfication - Bounding Box](#Object-Identyfication---Bounding-Box)
   - [Instance Segmentation Polygon-Preview](#Instance-Segmentation-Polygon-Preview)
 
 ***Inne technologie:*** 
