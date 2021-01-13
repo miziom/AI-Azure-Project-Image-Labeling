@@ -49,7 +49,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 | **4** |                    **Przerwa Świąteczna**                    | **23.12.20 - 01.01.21** | **MM, JK** | **X** |
 |   5   |               Analiza *Azure Machine Learning*               |       do 10.01.20       |     MM     |   X   |
 |   6   |                      Analiza Yolo_label                      |       do 10.01.20       |     MM     |   X   |
-|   7   |                                                              |                         |            |       |
+|   7   |       Analiza Awesome Data Labeling - Kili Technology        |       do 13.01.20       |     MM     |   X   |
 |   8   |                                                              |                         |            |       |
 |   9   |                                                              |                         |            |       |
 |  10   |                                                              |                         |            |       |
