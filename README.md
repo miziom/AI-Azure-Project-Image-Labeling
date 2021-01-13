@@ -451,7 +451,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
      Umożliwia oznaczanie konkretnych obszarów na obrazie oraz zdefiniowanymi klasami. Obszar jest definiowany w sposób ciągły, co pozwala na szybkie
 
-     ![](kili\semantic.gif)
+     ![](kili/semantic.gif)
 
    - *<u>**OCENA - 4/5**</u>*
 
