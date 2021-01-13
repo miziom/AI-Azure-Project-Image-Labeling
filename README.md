@@ -21,8 +21,8 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 - [Azure Machine Learning - Data Labeling](#Azure-Machine-Learning---Data-Labeling)
   - [Image Classification Multi-class](#Image-Classification-Multi-class)
   - [Image Classification Multi-label](#Image-Classification-Multi-label)
-  - [Object Identyfication (Bounding Box)](#Object-Identyfication-(Bounding-Box))
-  - [Instance Segmentation (Polygon) (Preview)](#Instance-Segmentation-(Polygon)-(Preview))
+  - [Object Identyfication - Bounding Box)](#Object-Identyfication---Bounding-Box)
+  - [Instance Segmentation Polygon-Preview](#Instance-Segmentation-Polygon-Preview)
 
 ***Inne technologie:*** 
 
@@ -257,7 +257,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
            AML dla tego projektu jest na pewno ułatwieniem w procesie oznaczania zdjęć. Ogromny wpływ na otrzymane wyniki ma zbiór danych oraz jego wstępne oznaczanie. Warto używać go dla projektów, gdzie trzeba oznaczyć tysiące zdjęć. W przypadku o ilości mniejszej niż 1000, nie ma sensu używać tego rodzaju projektu.
 
-     - ##### **Object Identyfication (Bounding Box)**
+     - ##### **Object Identyfication - Bounding Box**
 
        Umożliwia przypisywania klasy oraz zdefiniowania obwiedni, czyli określenia dokładnego położenia reprezentanta danej klasy.
 
@@ -296,7 +296,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
            Narzędzie to w znaczny sposób poprawia pracę nad oznaczaniem zbioru. Jeżeli mamy odpowiednie fundusze oraz mały zespół oraz zbiór liczący tysiące elementów, możemy poświęcić część zbioru. Możemy oznaczyć początkowe obrazy sposobem mniej dokładnym oraz oznaczać tylko elementy wyraźne i znaczące. Modelowi wystarczy to do treningu, po czym sam będzie proponował dokładniejsze oznaczenia. 
 
-       - ##### **Instance Segmentation (Polygon) (Preview)**
+       - ##### **Instance Segmentation Polygon-Preview**
 
          Jest to format który nie wspiera Azure Machine Learning. Umożliwia oznaczanie obrazów w o wile bardziej dokładny sposób. Jednak brak ML, który by wspierał proces sprawia, że jest to tylko porządny edytor do oznaczania zdjęć.
 
