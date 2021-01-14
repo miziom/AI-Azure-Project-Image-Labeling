@@ -31,6 +31,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 - Labelbox
 - Coco Annotator
 - Awesome Data Labeling
+- [Make-sens](#Make-sens)
 - [Kili Technology](#Kili-Technology)
 - [Yolo_label](#Yolo_label)
 - [*Google Cloud AI Platform Data Labeling Service* - niedostępny](#Google-Cloud-AI-Platform-Data-Labeling-Service)
@@ -349,7 +350,92 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
 2. ### dasdddasd
 
-3. ### Kili Technology
+3. ### Make-sens
+
+   Jest to bezpłatne narzędzie [online](https://www.makesense.ai/), które umożliwia oznaczanie zdjęć. Dzięki zastosowaniu przeglądarki nie wymaga  skomplikowanej instalacji - wystarczy wejść na stronę i gotowe. Istnieje również możliwość pobrania aplikacji i uruchomienia jej lokalnie. Potrzebne pliki oraz instrukcję jak to zrobić, można znaleźć na [GitHub](https://github.com/SkalskiP/make-sense). Aplikacja została napisana w języku TypeScript i bazuje na duecie React / Redux.
+
+   W celu skrócenia czasu, jaki trzeba poświęcić na opisywanie zdjęć, narzędzie to umożliwia korzystanie ze sztucznej inteligencji.  W chwili obecnej aplikacja może uzyskać wspracie:
+
+   - [SSD model](https://arxiv.org/abs/1512.02325)
+
+     Wstępnie przeszkolony na zbiorze danych COCO, który wykona część pracy przy rysowaniu ramek na zdjęciach, a także (w niektórych przypadkach) zasugeruje etykietę. Pokazane jest to poniżej, w oznaczaniu obiektów prostokątnych.
+
+   - [PoseNet model](https://www.tensorflow.org/lite/models/pose_estimation/overview)
+
+     To model widzenia, który można wykorzystać do oszacowania pozy osoby na obrazie poprzez oszacowanie, gdzie znajdują się kluczowe stawy ciała. Działanie ukazane jest poniżej, przy oznaczeniu punktów.
+
+   Producent deklaruje, że w przyszłości planuje także dodać m.in. modele klasyfikujące zdjęcia, wykrywające charakterystyczne cechy twarzy, a także całe twarze.
+
+   Aplikacja umożliwia dwa rodzaje projektów
+
+   - <u>oznaczanie obrazów</u>
+
+     Umożliwia oznaczanie obrazów klasami - od jednego do wielu klas dla jednego obrazu.
+
+     ![](make-sens/anots.gif)
+
+   - <u>detekcja obiektów</u>
+
+     Udostępnia szereg możliwości. Użytkownik może oznaczać obraz na kilka sposobów:
+
+     - **prostokąty (wsparcie AI)**
+
+       Użytkownika może oznaczać zdjęcia po przez określenie obszaru (prostokąt) oraz przypisaniu mu etykiety. Wsparcie AI może ułatwić pracę, lecz nie zawsze. Dla obraz z dobrze *czytelnym/widzianym* obiektem AI wspomaga proces bardzo dobrze. Gorzej w przypadku, kiedy obiekty nie są czytelne lub obraz jest słabej jakości. Pomimo, że zwykle algorytm nie trafia z wybranymi przez nas etykietami, realizuję pracę związaną z oznaczeniem lokalizacji obiektów na obrazie.
+
+       ![](make-sens/rect.gif)
+
+     - **wielokąt**
+
+       Użytkownik może zdefiniować szereg punktów, które stają się wierzchołkami wielokąta.
+
+       ![](make-sens/polygon.gif)
+
+     - **punkty (wsparcie AI)**
+
+       Istnieje również możliwość oznaczania obrazu punktami. Dzięki temu możemy oznaczyć zbiory, które pomogą nam zbadać postawy ciała. W tym przypadku pomoże nam AI. 
+
+       ![](make-sens/points.gif)
+
+     - **linie**
+
+       ![](make-sens/lines.gif)
+
+     Oznaczone zdjęcia można wyeksportować do wielu formatów w zależności od projektu:
+
+     |                | CSV  | YOLO | VOC XML | VGG JSON | COCO JSON | PIXEL MASK |
+     | :------------: | :--: | :--: | :-----: | :------: | :-------: | :--------: |
+     |   **Punkt**    |  ✓   |  ✗   |    ☐    |    ☐     |     ☐     |     ✗      |
+     |   **Linia**    |  ✓   |  ✗   |    ✗    |    ✗     |     ✗     |     ✗      |
+     | **Prostokąt**  |  ✓   |  ✓   |    ✓    |    ☐     |     ☐     |     ✗      |
+     |  **Wielokąt**  |  ☐   |  ✗   |    ☐    |    ✓     |     ✓     |     ☐      |
+     | **Oznaczanie** |  ✓   |  ✗   |    ✗    |    ✗     |     ✗     |     ✗      |
+
+     Legenda:
+
+     - ✓ - wspierany format
+     - ☐ - nie wspierany format
+     - ✗ - format nie ma sensu dla danego typu etykiety
+
+     ![](make-sens/export.gif)
+
+   - *<u>**OCENA - 4.5/5**</u>*
+
+     Doskonale sprawdza się w małych projektach, znacznie ułatwiając i przyspieszając proces przygotowania zbioru danych. Wsparcie AI oraz deklaracje producenta sprawiają, że atrakcyjność produktu znacznie wzrasta. Do kompletu brakuje możliwości pracy w grupie, chociaż trzeba zauważyć, że producent poleca aplikacje do małych projektów, gdzie praca grupowa nie jest tak wymagana.
+
+   - ***<u>ZALETY</u>***
+
+     - bezpłatna
+     - online
+     - doskonały dla małych projektów
+     - SSD model oraz PoseNet model
+     - nie trzeba przesyłać obrazów na serwer
+
+   - ***<u>WADY</u>***
+
+     - SSD dla gorszej jakości zdjęć bardziej utrudnia, niż pomaga w realizacji projektu
+     - brak możliwości pracy w grupie
+
+4. ### Kili Technology
 
    *[Kili Technology](https://kili-technology.com/)* to narzędzie do adnotacji obrazu, tekstu i głosu, zaprojektowane, aby pomóc firmom w szybszym wdrażaniu aplikacji uczenia maszynowego.
 
@@ -469,7 +555,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
      - w przypadku użycia ML - względnie wysoki próg wejścia
      - przy jednokrotnym ładowanie do zbioru możemy dodawać do 500 obrazów, ale dany zbiór możemy poszerzać wielokrotnie
 
-4. ### Yolo_label
+5. ### Yolo_label
 
    Proste narzędzie do oznaczenia zbioru danych. Pliki wyjściowe są w formacie .txt, a oznaczenia są w formacie YOLO. Oznacza to, że każda linia w pliku opisuje pojedynczy oznaczony obiek:
 
@@ -514,7 +600,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
      - brak wsparcia Machine Learning
      - brak możliwości pracy w grupie 
 
-5. ### Google Cloud AI Platform Data Labeling Service
+6. ### Google Cloud AI Platform Data Labeling Service
 
    Niestety nie mogliśmy przetestować tej usługi, ponieważ została zablokowana z powodu pandemii.
 
