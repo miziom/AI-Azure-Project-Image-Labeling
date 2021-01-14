@@ -40,6 +40,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
 - [ZBIÓR KWAITÓW](https://www.kaggle.com/alxmamaev/flowers-recognition)
 - [Open Images Dataset V6](https://storage.googleapis.com/openimages/web/index.html)
+- [Dog Api](https://dog.ceo/dog-api/breeds-list)
 
 ### Kalendarz
 
@@ -51,7 +52,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 |   4   |             Analiza *Azure Machine Learning*             |       do 10.01.20       |     MM     |   X   |
 |   5   |                   Analiza *Yolo_label*                   |       do 10.01.20       |     MM     |   X   |
 |   6   |    Analiza *Awesome Data Labeling - Kili Technology*     |       do 13.01.20       |     MM     |   X   |
-|   7   |                                                          |                         |            |       |
+|   7   |                   Analiza *Make-sens*                    |       do 15.01.20       |     MM     |   X   |
 |   8   |                                                          |                         |            |       |
 |   9   |                                                          |                         |            |       |
 
