@@ -331,11 +331,12 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
    - ***<u>WNIOSKI</u>***
      - Niezależnie od rodzaju projektu, sposób oznaczania obrazów jest bardzo intuicyjny i nie wymaga długiego szkolenia, żeby opanować pracę w tym środowisku.
-     - W początkowych etapach projektu, pośpiech nie jest wskazany. Należy umożliwiać inicjacje kolejnych treningów i oczekiwać ich wyników, ponieważ dzięki takiemu działaniu jesteśmy w stanie szybciej osiągać satysfakcjonujące nas efekty.
+     - W początkowych etapach projektu, pośpiech nie jest wskazany. Należy umożliwiać inicjacje kolejnych treningów i oczekiwać ich wyników, ponieważ dzięki takiemu działaniu jesteśmy w stanie szybciej osiągać satysfakcjonujące nas efekty uczenia
      - Sens użycia narzędzia jest wtedy, kiedy pracujemy na względnie dużych zbiorach, liczących wiele tysięcy zdjęć. Praca na zbiorach poniżej 500 obraz kompletnie nie ma sensu.
      - Ze względu na to, że podczas treningu Maszyna Wirtualna pracuje tyle ile potrzebuje, trudno jest określić koszty jakie zostaną poniesione. W przeprowadzanych doświadczeniach zauważono, że znaczne wzrosty długości trwania poszczególnych treningów są dłuższe im wyższej iteracji jest to trening, ale nie dzieje się tak zawsze. Znając cenę pracy za godzinę, możemy tylko szacować. Im większy zbiór, tym należy spodziewać się dłuższej pracy maszyny.
      - Im bardziej zrównoważony zbiór (porównywalne ilości przedstawicieli z każdej klasy), tym cały proces przebiega bardziej płynnie i szybko
      -  Po stworzeniu projektu, jesteśmy w stanie dodatkowo rozdzielić proces **trenowania** oraz **prognozowania** na dwie oddzielne maszyny wirtualna - domyślnie pracują na tej samej, wyznaczonej przy tworzeniu projektu.
+     -  Etap *grupowania* dla projektu multi-labeling powinien zostać wyeliminowany, tak jak w projekcie Bounding Box
    - <u>***ZALETY***</u>
 
      - przyspieszenie procesu oznaczania zbioru obrazów
@@ -343,10 +344,12 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
      - zarządzanie projektem i śledzenie postępów
      - dynamiczne powiększanie zbioru wejściowego
      - wsparcie Azure Machine Learning
+     - model dostosowuję się ciągle do naszego projektu, a nie jest wykorzystaniem gotowego modelu
      - Multi-class Image Classification oraz Object Identyfication
      - niski próg wejścia
      - prosty i szybki eksport wyników
      - obsługa zbiorów do 500 000 obrazów
+     - możliwość dodawania dodatkowych etykiet po stworzeniu projektu
    - <u>***WADY***</u>
 
      - trudno w pełni określić koszty, można "tylko" szacować
