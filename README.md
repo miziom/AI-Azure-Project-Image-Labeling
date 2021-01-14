@@ -30,7 +30,8 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 - Label Studio
 - Labelbox
 - Coco Annotator
-- [Awesome Data Labeling - Kili Technology](#Awesome-Data-Labeling---Kili-Technology)
+- Awesome Data Labeling
+- [Kili Technology](#Kili-Technology)
 - [Yolo_label](#Yolo_label)
 - [*Google Cloud AI Platform Data Labeling Service* - niedostępny](#Google-Cloud-AI-Platform-Data-Labeling-Service)
 
@@ -348,7 +349,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
 2. ### dasdddasd
 
-3. ### Awesome Data Labeling - Kili Technology
+3. ### Kili Technology
 
    *[Kili Technology](https://kili-technology.com/)* to narzędzie do adnotacji obrazu, tekstu i głosu, zaprojektowane, aby pomóc firmom w szybszym wdrażaniu aplikacji uczenia maszynowego.
 
