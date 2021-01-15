@@ -29,7 +29,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 - [Cvat](#Cvat)
 - Label Studio
 - Labelbox
-- [Coco Annotator](#Coco Annotator)
+- [Coco Annotator](#Coco-Annotator)
 - Awesome Data Labeling
 - [Make-sens](#Make-sens)
 - [Kili Technology](#Kili-Technology)
@@ -85,7 +85,7 @@ Formaty adnotacji zdjęć:
 
 Nie od dziś wiadomo, że algorytmy wykorzystujące głębokie uczenie (ang. deep learning) wymagają dużych zbiorów danych. Z tego powodu warto wspomóc się ogólnodostępnymi bazami zdjęć.
 
-1. #### Coco Annotator
+1. #### Coco-Annotator
 
 COCO to zakrojony na szeroką skalę zbiór danych dotyczących wykrywania (ang. *detection*) obiektów, segmentacji (ang. *segmentation*) i podpisywania (ang. *captioning*).
 
@@ -140,122 +140,6 @@ Aby móc wykorzystywać udostępnione zbiory należy wykorzystać udostępnione 
   - niezbyt bogata dokumentacja
 
 ### Narzędzia do etykietowania
-
-1. #### CVAT
-
-CVAT (Computer Vison Annotation Tool)
-
-* jest bezpłatnym, open source narzędziem do adnotacji obrazu oraz  wideo
-* prowadzony przez firmę Intel.
-* Projekt ten został utworzony przez profesjonalny zespół do adnotacji danych oraz UI/UX projektantów. W połączeniu z bogatą ofertą skrótów klawiszowych pozwala na proces szybkiej adnotacji danych.
-* udostępniony w oparciu o licencję MIT
-
-#####  Wspierane formaty
-
-Więcej informacji można znaleźć [tutaj](https://github.com/openvinotoolkit/cvat/blob/develop/cvat/apps/dataset_manager/formats/README.md#formats)
-
-| Format                                                       | Import | Export |
-| ------------------------------------------------------------ | ------ | ------ |
-| [CVAT for images](cvat/apps/documentation/xml_format.md#annotation) | X      | X      |
-| [CVAT for a video](cvat/apps/documentation/xml_format.md#interpolation) | X      | X      |
-| [Datumaro](https://github.com/openvinotoolkit/datumaro)      |        | X      |
-| [PASCAL VOC](http://host.robots.ox.ac.uk/pascal/VOC/)        | X      | X      |
-| Segmentation masks from [PASCAL VOC](http://host.robots.ox.ac.uk/pascal/VOC/) | X      | X      |
-| [YOLO](https://pjreddie.com/darknet/yolo/)                   | X      | X      |
-| [MS COCO Object Detection](http://cocodataset.org/#format-data) | X      | X      |
-| [TFrecord](https://www.tensorflow.org/tutorials/load_data/tf_records) | X      | X      |
-| [MOT](https://motchallenge.net/)                             | X      | X      |
-| [LabelMe 3.0](http://labelme.csail.mit.edu/Release3.0)       | X      | X      |
-| [ImageNet](http://www.image-net.org)                         | X      | X      |
-| [CamVid](http://mi.eng.cam.ac.uk/research/projects/VideoRec/CamVid/) | X      | X      |
-
-##### Wykorzystywanie
-
-Interfejs użytkownika jest oparty o interfejs webowy.  Do dyspozycji mamy dwie możliwości:
-
-* wersja demo - [cvat.org](https://cvat.org/)
-  ograniczenia:
-  * max 10 zdań może posiadać jeden użytkownik
-  * max 500MB danych
-* lokalna instancja, oparta o kontener - [tutorial](https://github.com/openvinotoolkit/cvat/blob/develop/cvat/apps/documentation/installation.md)
-
-Do dyspozycji również mamy REST API, którego dokumentacje można znaleźć pod adresem `<cvat_origin>/api/swagger>`, np. https://cvat.org/api/swagger/
-
-Sam proces utworzenia projektu oraz zadań, jest bardzo prosty. Co widać na poniższym gifie.
-
-![cvat generation project](cvat/gen-project.gif)
-
-##### Dodawanie adnotacji
-
-Czynność tą można wykonywać myszką lub klawiaturą za pomocą skrótów klawiszowych. Aby poznać skróty klawiszowe należy nacisnąć F1.
-
-* standardowe dodawanie etykiet
-
-  * bounding box
-    ![standard-bb](cvat/standard-bb.gif)
-
-  * polygon - manual
-
-    ![standard-bb](cvat\standard-polygon.gif)
-
-
-  * polygon - AI tool
-
-![standard-bb](cvat/standard-polygon-ai.gif)
-
-* tag annotation - tagowanie zdjęć
-  ![standard-bb](cvat/tag-annotation.gif)
-
-2. #### Yolo_label
-
-Proste narzędzie do oznaczenia zbioru danych. Pliki wyjściowe są w formacie .txt, a oznaczenia są w formacie YOLO. Oznacza to, że każda linia w pliku opisuje pojedynczy oznaczony obiek:
-
-```
-NUMER_KLASY X_MIN Y_MIN SZEROKOŚĆ WYSOKOŚĆ
-```
-
-Wartości określające pozycje zdjęcia występują w postaci znormalizowanej - z przedziału <0, 1>. Pliki wyjściowe otrzymują nazwę pokrywającą się z nazwą oznaczanego zdjęcia.
-
-W celu skorzystania z programu, należy pobrać go ([LINK](https://drive.google.com/file/d/1lanO8SyY2QlbVCbOR0LlwQjQYbhoteTd/view)), a następnie uruchomić *YoloLabel.exe*. Po uruchomieniu należy wybrać folder, w którym powinny znajdować się **tylko i wyłącznie** zdjęcia do oznaczenia. Następnie należy wczytać plik z nazwami poszczególnych klas, w postaci pliki *.txt* lub *.names*. Wewnątrz niego w pojedynczych liniach powinny znajdować się nazwy klas:
-
-> daisy
->
-> rose
->
-> sunflower
-
-Następnie należy oznaczać poszczególne zdjęcia:
-
-![](yolo-label/yolo.gif)
-
-W folderze ze zdjęciami tworzone są pliki z oznaczeniami:
-
-![](yolo-label/txt_files.PNG)
-
-Struktura pliku dla oznaczonego zdjęcia wygląda następująco:
-
-> 0 0.252392 0.540074 0.431818 0.535142
->
-> 0 0.739234 0.471640 0.504785 0.585697
-
-- *<u>**OCENA DZIAŁANIA - 2/5**</u>*
-
-  Jest to proste narzędzie jednak ograniczone. Pozwala na jeden format wynikowy (zgodny z YOLO) oraz nie pozwala na pracę grupową.
-
-- ***<u>ZALETY</u>***
-
-  - Intuicyjna obsługa
-  - prosta instalacja
-  - darmowa aplikacja
-  - niski próg wejścia
-
-- ***<u>WADY</u>***
-
-  - brak wsparcia Machine Learning
-  - brak możliwości pracy w grupie
-
-### Rozbudowane narzędzia do trenowania algorytmu
-
 1. #### Azure Machine Learning - Data Labeling
 
    Narzędzie to jest miejscem do tworzenia i monitorowania projektów etykietowania oraz zarządzania nimi po przez:
@@ -555,7 +439,122 @@ Struktura pliku dla oznaczonego zdjęcia wygląda następująco:
      - nie ma możliwości powrotu do raz pominiętego obrazu
 
 
-3. ### Make-sens
+
+2. #### CVAT
+
+CVAT (Computer Vison Annotation Tool)
+
+* jest bezpłatnym, open source narzędziem do adnotacji obrazu oraz  wideo
+* prowadzony przez firmę Intel.
+* Projekt ten został utworzony przez profesjonalny zespół do adnotacji danych oraz UI/UX projektantów. W połączeniu z bogatą ofertą skrótów klawiszowych pozwala na proces szybkiej adnotacji danych.
+* udostępniony w oparciu o licencję MIT
+
+#####  Wspierane formaty
+
+Więcej informacji można znaleźć [tutaj](https://github.com/openvinotoolkit/cvat/blob/develop/cvat/apps/dataset_manager/formats/README.md#formats)
+
+| Format                                                       | Import | Export |
+| ------------------------------------------------------------ | ------ | ------ |
+| [CVAT for images](cvat/apps/documentation/xml_format.md#annotation) | X      | X      |
+| [CVAT for a video](cvat/apps/documentation/xml_format.md#interpolation) | X      | X      |
+| [Datumaro](https://github.com/openvinotoolkit/datumaro)      |        | X      |
+| [PASCAL VOC](http://host.robots.ox.ac.uk/pascal/VOC/)        | X      | X      |
+| Segmentation masks from [PASCAL VOC](http://host.robots.ox.ac.uk/pascal/VOC/) | X      | X      |
+| [YOLO](https://pjreddie.com/darknet/yolo/)                   | X      | X      |
+| [MS COCO Object Detection](http://cocodataset.org/#format-data) | X      | X      |
+| [TFrecord](https://www.tensorflow.org/tutorials/load_data/tf_records) | X      | X      |
+| [MOT](https://motchallenge.net/)                             | X      | X      |
+| [LabelMe 3.0](http://labelme.csail.mit.edu/Release3.0)       | X      | X      |
+| [ImageNet](http://www.image-net.org)                         | X      | X      |
+| [CamVid](http://mi.eng.cam.ac.uk/research/projects/VideoRec/CamVid/) | X      | X      |
+
+##### Wykorzystywanie
+
+Interfejs użytkownika jest oparty o interfejs webowy.  Do dyspozycji mamy dwie możliwości:
+
+* wersja demo - [cvat.org](https://cvat.org/)
+  ograniczenia:
+  * max 10 zdań może posiadać jeden użytkownik
+  * max 500MB danych
+* lokalna instancja, oparta o kontener - [tutorial](https://github.com/openvinotoolkit/cvat/blob/develop/cvat/apps/documentation/installation.md)
+
+Do dyspozycji również mamy REST API, którego dokumentacje można znaleźć pod adresem `<cvat_origin>/api/swagger>`, np. https://cvat.org/api/swagger/
+
+Sam proces utworzenia projektu oraz zadań, jest bardzo prosty. Co widać na poniższym gifie.
+
+![cvat generation project](cvat/gen-project.gif)
+
+##### Dodawanie adnotacji
+
+Czynność tą można wykonywać myszką lub klawiaturą za pomocą skrótów klawiszowych. Aby poznać skróty klawiszowe należy nacisnąć F1.
+
+* standardowe dodawanie etykiet
+
+  * bounding box
+    ![standard-bb](cvat/standard-bb.gif)
+
+  * polygon - manual
+
+    ![standard-bb](cvat\standard-polygon.gif)
+
+
+  * polygon - AI tool
+
+![standard-bb](cvat/standard-polygon-ai.gif)
+
+* tag annotation - tagowanie zdjęć
+  ![standard-bb](cvat/tag-annotation.gif)
+
+3. #### Yolo_label
+
+Proste narzędzie do oznaczenia zbioru danych. Pliki wyjściowe są w formacie .txt, a oznaczenia są w formacie YOLO. Oznacza to, że każda linia w pliku opisuje pojedynczy oznaczony obiek:
+
+```
+NUMER_KLASY X_MIN Y_MIN SZEROKOŚĆ WYSOKOŚĆ
+```
+
+Wartości określające pozycje zdjęcia występują w postaci znormalizowanej - z przedziału <0, 1>. Pliki wyjściowe otrzymują nazwę pokrywającą się z nazwą oznaczanego zdjęcia.
+
+W celu skorzystania z programu, należy pobrać go ([LINK](https://drive.google.com/file/d/1lanO8SyY2QlbVCbOR0LlwQjQYbhoteTd/view)), a następnie uruchomić *YoloLabel.exe*. Po uruchomieniu należy wybrać folder, w którym powinny znajdować się **tylko i wyłącznie** zdjęcia do oznaczenia. Następnie należy wczytać plik z nazwami poszczególnych klas, w postaci pliki *.txt* lub *.names*. Wewnątrz niego w pojedynczych liniach powinny znajdować się nazwy klas:
+
+> daisy
+>
+> rose
+>
+> sunflower
+
+Następnie należy oznaczać poszczególne zdjęcia:
+
+![](yolo-label/yolo.gif)
+
+W folderze ze zdjęciami tworzone są pliki z oznaczeniami:
+
+![](yolo-label/txt_files.PNG)
+
+Struktura pliku dla oznaczonego zdjęcia wygląda następująco:
+
+> 0 0.252392 0.540074 0.431818 0.535142
+>
+> 0 0.739234 0.471640 0.504785 0.585697
+
+- *<u>**OCENA DZIAŁANIA - 2/5**</u>*
+
+  Jest to proste narzędzie jednak ograniczone. Pozwala na jeden format wynikowy (zgodny z YOLO) oraz nie pozwala na pracę grupową.
+
+- ***<u>ZALETY</u>***
+
+  - Intuicyjna obsługa
+  - prosta instalacja
+  - darmowa aplikacja
+  - niski próg wejścia
+
+- ***<u>WADY</u>***
+
+  - brak wsparcia Machine Learning
+  - brak możliwości pracy w grupie
+
+
+4. #### Make-sens
 
    Jest to bezpłatne narzędzie [online](https://www.makesense.ai/), które umożliwia oznaczanie zdjęć. Dzięki zastosowaniu przeglądarki nie wymaga  skomplikowanej instalacji - wystarczy wejść na stronę i gotowe. Istnieje również możliwość pobrania aplikacji i uruchomienia jej lokalnie. Potrzebne pliki oraz instrukcję jak to zrobić, można znaleźć na [GitHub](https://github.com/SkalskiP/make-sense). Aplikacja została napisana w języku TypeScript i bazuje na duecie React / Redux.
 
@@ -640,7 +639,7 @@ Struktura pliku dla oznaczonego zdjęcia wygląda następująco:
      - SSD dla gorszej jakości zdjęć bardziej utrudnia, niż pomaga w realizacji projektu
      - brak możliwości pracy w grupie
 
-4. #### Kili Technology
+5. #### Kili Technology
 
    *[Kili Technology](https://kili-technology.com/)* to narzędzie do adnotacji obrazu, tekstu i głosu, zaprojektowane, aby pomóc firmom w szybszym wdrażaniu aplikacji uczenia maszynowego.
 
