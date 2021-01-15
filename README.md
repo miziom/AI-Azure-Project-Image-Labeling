@@ -24,12 +24,12 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
   - [Object Identyfication - Bounding Box](#Object-Identyfication---Bounding-Box)
   - [Instance Segmentation Polygon-Preview](#Instance-Segmentation-Polygon-Preview)
 
-***Inne technologie:*** 
+***Inne technologie:***
 
-- Cvat
+- [Cvat](#Cvat)
 - Label Studio
 - Labelbox
-- Coco Annotator
+- [Coco Annotator](#Coco Annotator)
 - Awesome Data Labeling
 - [Make-sens](#Make-sens)
 - [Kili Technology](#Kili-Technology)
@@ -52,13 +52,165 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 |   4   |             Analiza *Azure Machine Learning*             |       do 10.01.20       |     MM     |   X   |
 |   5   |                   Analiza *Yolo_label*                   |       do 10.01.20       |     MM     |   X   |
 |   6   |    Analiza *Awesome Data Labeling - Kili Technology*     |       do 13.01.20       |     MM     |   X   |
-|   7   |                   Analiza *Make-sens*                    |       do 15.01.20       |     MM     |   X   |
-|   8   |                                                          |                         |            |       |
-|   9   |                                                          |                         |            |       |
+|   7   |                   Analiza *Make-sens*                    |       do 15.01.20       |     MM  
+|   x   |  
+|   8   |                      Analiza *CVAT*                      |       do 16.01.20       |     JK     |   x   |
+|   9   |                  Analiza *Label Studio*                  |       do 16.01.20       |     JK     |       |
+|  10   |                    Analiza *Labelbox*                    |       do 16.01.20       |     JK     |       |
+|  11   |                 Analiza *Coco Annotator*                 |       do 16.01.20       |     JK     |   X   |
+|       |                                                          |                         |            |       |
+### Mini wstęp teoretyczny
 
-### Opis funkcjonalności i schematy działania
+Proces tworzenia algorytmu do etykietowania zdjęć można podzielić na etapy:
 
-1. ### Azure Machine Learning - Data Labeling
+* określenie zbioru zdjęć uczącego, ewentualnie walidacyjnego oraz testowego,
+* nadanie etykiet zdjęciom, które jeszcze ich nie posiadają,
+* trenowanie algorytmu,
+* walidacja rezultatów.
+
+Formaty adnotacji zdjęć:
+
+* [CVAT](https://github.com/openvinotoolkit/cvat/blob/develop/cvat/apps/documentation/xml_format.md)
+* [COCO](https://cocodataset.org/#format-data)
+* [PASCAL VOD](http://host.robots.ox.ac.uk/pascal/VOC/voc2012/htmldoc/index.html)
+* [YOLO](https://github.com/AlexeyAB/darknet#how-to-train-pascal-voc-data)
+* [TF Detection API](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/using_your_own_dataset.md)
+* [MOT sqeuences](https://arxiv.org/pdf/1906.04567.pdf)
+* [MOTS](https://www.vision.rwth-aachen.de/page/mots)
+* [ImageNet](http://image-net.org/)
+* [CamVid](https://mi.eng.cam.ac.uk/research/projects/VideoRec/CamVid/)
+* [LabelMe](http://labelme.csail.mit.edu/Release3.0/)
+
+### Zbiory danych
+
+Nie od dziś wiadomo, że algorytmy wykorzystujące głębokie uczenie (ang. deep learning) wymagają dużych zbiorów danych. Z tego powodu warto wspomóc się ogólnodostępnymi bazami zdjęć.
+
+1. #### Coco Annotator
+
+COCO to zakrojony na szeroką skalę zbiór danych dotyczących wykrywania (ang. *detection*) obiektów, segmentacji (ang. *segmentation*) i podpisywania (ang. *captioning*).
+
+COCO w liczbach:
+
+* 330k zdjęć (>200k z etykietami)
+* 80 kategorii obiektów
+
+Generalnie dostępne zbiory służą do uczenia algorytmów, które można zgłaszać w corocznych konkursach organizowanych przez COCO. Z tego powodu sinieją różne kombinacje zdjęć. Z czego najpopularniejsza to 2017 Train/Val/Test
+
+Zbiory można przeglądać za pomocą [Coco explorer'a](https://cocodataset.org/#explore) przedstawionego niżej:
+
+![coco explorer](coco/coco explorer.gif)
+
+Aby móc obsłużyć opracowane zbiory danych powstał projekt [datumaro](https://github.com/openvinotoolkit/datumaro). Poradnik można znaleźć [tutaj]( https://github.com/openvinotoolkit/datumaro/blob/develop/docs/user_manual.md) Umożliwia on między innymi:
+
+* tworzenie projektów
+* odczytywanie, zapisywanie oraz konwersja zbiorów w formatach:
+  * COCO
+  * PASCAL VOD
+  * YOLO
+  * TF Detection API
+  * WIDER Face
+  * MOT sqeuences
+  * MOTS PNG
+  * ImageNet
+  * CamVid
+  * LabelMe
+  * CVAT
+* filtrowanie podzbioru np. ze względu na brak adnotacji określonej klasy
+* łączenie zbiorów danych w jeden
+* konwersją adnotacji, np. poliglonu na maskę
+* dzielenie zbioru na dowolne podzbiory np. `train`, `val`, `test`
+
+Aby móc wykorzystywać udostępnione zbiory należy wykorzystać udostępnione [COCO API](https://github.com/cocodataset/cocoapi), które wykorzystuje wcześniej wspomniany projekt datumaro. API można wykorzystywać za pomocą Lua, Matlaba oraz Pythona. Do testów został wykorzystany Python, czego rezultat można ujrzeć poniżej. Nie obyło się bez problemów, użytkowników windows'a zalecamy do zerknięcia do [tego repozytorium](https://github.com/philferriere/cocoapi)
+
+![python api](coco/pyhon-api.gif)
+
+
+
+- ***OCENA - 4/5***
+
+  Bogaty zbiór zdjęć z załączonymi adnotacjami 80 różnych kategorii. Dołączone narzędzie *datamuro* ma w pełni wystarczające możliwości. Ocena obniżona ponieważ, dokumentacja mogła by być bogatsza oraz wymagany  jest umiejętność posługiwania się terminalem itd.
+
+- <u>***ZALETY***</u>
+
+  - duży zbiór danych ze zdjęciami posiadającymi etykiety
+  - bogate w możliwości narzędzie *datamuro*, które można wykorzystywać w dowolnym projekcie
+
+- <u>***WADY***</u>
+
+  - niezbyt bogata dokumentacja
+
+### Narzędzia do etykietowania
+
+1. #### CVAT
+
+CVAT (Computer Vison Annotation Tool)
+
+* jest bezpłatnym, open source narzędziem do adnotacji obrazu oraz  wideo
+* prowadzony przez firmę Intel.
+* Projekt ten został utworzony przez profesjonalny zespół do adnotacji danych oraz UI/UX projektantów. W połączeniu z bogatą ofertą skrótów klawiszowych pozwala na proces szybkiej adnotacji danych.
+* udostępniony w oparciu o licencję MIT
+
+#####  Wspierane formaty
+
+Więcej informacji można znaleźć [tutaj](https://github.com/openvinotoolkit/cvat/blob/develop/cvat/apps/dataset_manager/formats/README.md#formats)
+
+| Format                                                       | Import | Export |
+| ------------------------------------------------------------ | ------ | ------ |
+| [CVAT for images](cvat/apps/documentation/xml_format.md#annotation) | X      | X      |
+| [CVAT for a video](cvat/apps/documentation/xml_format.md#interpolation) | X      | X      |
+| [Datumaro](https://github.com/openvinotoolkit/datumaro)      |        | X      |
+| [PASCAL VOC](http://host.robots.ox.ac.uk/pascal/VOC/)        | X      | X      |
+| Segmentation masks from [PASCAL VOC](http://host.robots.ox.ac.uk/pascal/VOC/) | X      | X      |
+| [YOLO](https://pjreddie.com/darknet/yolo/)                   | X      | X      |
+| [MS COCO Object Detection](http://cocodataset.org/#format-data) | X      | X      |
+| [TFrecord](https://www.tensorflow.org/tutorials/load_data/tf_records) | X      | X      |
+| [MOT](https://motchallenge.net/)                             | X      | X      |
+| [LabelMe 3.0](http://labelme.csail.mit.edu/Release3.0)       | X      | X      |
+| [ImageNet](http://www.image-net.org)                         | X      | X      |
+| [CamVid](http://mi.eng.cam.ac.uk/research/projects/VideoRec/CamVid/) | X      | X      |
+
+##### Wykorzystywanie
+
+Interfejs użytkownika jest oparty o interfejs webowy.  Do dyspozycji mamy dwie możliwości:
+
+* wersja demo - [cvat.org](https://cvat.org/)
+  ograniczenia:
+  * max 10 zdań może posiadać jeden użytkownik
+  * max 500MB danych
+* lokalna instancja, oparta o kontener - [tutorial](https://github.com/openvinotoolkit/cvat/blob/develop/cvat/apps/documentation/installation.md)
+
+Do dyspozycji również mamy REST API, którego dokumentacje można znaleźć pod adresem `<cvat_origin>/api/swagger>`, np. https://cvat.org/api/swagger/
+
+Sam proces utworzenia projektu oraz zadań, jest bardzo prosty. Co widać na poniższym gifie.
+
+![cvat generation project](cvat\gen-project.gif)
+
+##### Dodawanie adnotacji
+
+Czynność tą można wykonywać myszką lub klawiaturą za pomocą skrótów klawiszowych. Aby poznać skróty klawiszowe należy nacisnąć F1.
+
+* standardowe dodawanie obiektów
+
+  * bounding box
+    ![standard bb](cvat\standard-bb.gif)
+
+  * polygon - manual
+
+    ![standard bb](cvat\standard-polygon.gif)
+
+
+  * polygon - AI tool
+
+![standard bb](cvat\standard-polygon-ai.gif)
+
+* tag annotation - tagowanie zdjęć
+  ![standard bb](cvat\tag-annotation.gif)
+
+
+
+### Rozbudowane narzędzia do trenowania algorytmu
+
+1. #### Azure Machine Learning - Data Labeling
 
    Narzędzie to jest miejscem do tworzenia i monitorowania projektów etykietowania oraz zarządzania nimi po przez:
 
@@ -68,9 +220,9 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
    - przeglądanie oznaczonych danych
    - eksport oznaczonych danych
 
-   Niezależnie od typu projektu (4 możliwości, opisane w dalszej części), należy spełnić pewne wymagania: 
+   Niezależnie od typu projektu (4 możliwości, opisane w dalszej części), należy spełnić pewne wymagania:
 
-   - <u>wprowadzenie zbioru danych</u> 
+   - <u>wprowadzenie zbioru danych</u>
 
      Podajemy jego nazwę oraz możemy zamieścić jego opis. Wcześniej jednak musimy zdecydować jakiego typu będzie to zbiór. Zbiór może liczyć ***maksymalnie 500 000 obrazów***. Mamy dwie możliwości:
 
@@ -117,7 +269,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
      Ponieważ ostateczne etykiety nadal opierają się na danych wejściowych od osób etykietujących, technologia ta jest nazywana ***human in the loop labeling***.
 
-     Aby móc skorzystać z ML należy użyć Maszyny Wirtualnej. W zależności od subskrypcji mamy dostęp do różnych klastrów. Maszyny możemy stworzyć podczas tworzenia projektu, lub wybrać wcześniej utworzone. 
+     Aby móc skorzystać z ML należy użyć Maszyny Wirtualnej. W zależności od subskrypcji mamy dostęp do różnych klastrów. Maszyny możemy stworzyć podczas tworzenia projektu, lub wybrać wcześniej utworzone.
 
      Platforma AML udostępnia nam 2 typy maszyn wirtualnych, jeżeli chodzi o ich priorytet:
 
@@ -125,17 +277,17 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
      - o niskim priorytecie - tańsze, ale nie gwarantują węzłów obliczeniowych, może okazać się, że praca zostanie przerwana lub rozpoczęta z dużym opóźnieniem
 
-     Można korzystać tylko z maszyn wirtualnych z obsługą **GPU**, co korzystnie wpływa na szybkość obliczeń, szczególnie kiedy chodzi o przetwarzanie obrazów. 
+     Można korzystać tylko z maszyn wirtualnych z obsługą **GPU**, co korzystnie wpływa na szybkość obliczeń, szczególnie kiedy chodzi o przetwarzanie obrazów.
 
-     Oprócz wyboru priorytetu, istnieje możliwość wyboru wielkości tworzonej maszyny. Obsługiwane rozmiary maszyn wirtualnych mogą być ograniczone w zależności od regionu. Microsoft publikuje listę maszyn oraz ich dostępności do poszczególnych regionów - [LINK](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=virtual-machines&regions=all). 
+     Oprócz wyboru priorytetu, istnieje możliwość wyboru wielkości tworzonej maszyny. Obsługiwane rozmiary maszyn wirtualnych mogą być ograniczone w zależności od regionu. Microsoft publikuje listę maszyn oraz ich dostępności do poszczególnych regionów - [LINK](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=virtual-machines&regions=all).
 
-     W ramach używanej licencji studenckiej całkowity dostępny limit wynosi **6 rdzeni**. 
+     W ramach używanej licencji studenckiej całkowity dostępny limit wynosi **6 rdzeni**.
 
      W przypadku wielkości można wybierać pomiędzy dwiema opcjami:
 
      - polecanymi
 
-       Poniżej przedstawiono dostępne polecane VM dla rekomendowanych rozmiarów oraz pozostałych. Jak widać w zależności od możliwości Maszyny zmienia się jej cena pracy za godzinę. 
+       Poniżej przedstawiono dostępne polecane VM dla rekomendowanych rozmiarów oraz pozostałych. Jak widać w zależności od możliwości Maszyny zmienia się jej cena pracy za godzinę.
 
        ![2_vm_dedicated_recommended](aml-screens/2_vm_dedicated_recommended.PNG)
 
@@ -159,9 +311,9 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
        ![](aml-screens/gifs/manual.gif)
 
-     - **etap klastrowania** - nie występuje w projektach wykrywania obiektów 
+     - **etap klastrowania** - nie występuje w projektach wykrywania obiektów
 
-       Po odpowiedniej ilości wyetykietowanych obrazów, model zaczyna grupować podobne obrazy. Sprawia to, że pogrupowane obrazy prezentowane są osobom etykietującym na ekranie na wybranych przez nich siatkach 4, 6 lub 9 obrazów. Umożliwia to znaczne przyspieszenie pracy, ponieważ oznaczający nie muszą poświęcać dodatkowego czasu na za wybieranie pomiędzy klasami. 
+       Po odpowiedniej ilości wyetykietowanych obrazów, model zaczyna grupować podobne obrazy. Sprawia to, że pogrupowane obrazy prezentowane są osobom etykietującym na ekranie na wybranych przez nich siatkach 4, 6 lub 9 obrazów. Umożliwia to znaczne przyspieszenie pracy, ponieważ oznaczający nie muszą poświęcać dodatkowego czasu na za wybieranie pomiędzy klasami.
 
        Po wstępnym wytrenowaniu modelu na danych oznaczonych ręcznie, model jest ograniczany do ostatniej w pełni połączonej warstwy. Obrazy bez etykiety są następnie przepuszczane przez wycięty/ograniczony model w procesie znanym jako cechowanie (featurization). To umieszcza każdy obraz w wielowymiarowej przestrzeni zdefiniowanej przez tę warstwę modelu. Obrazy, które są najbliższymi sąsiadami w przestrzeni, są używane do zadań grupowania.
 
@@ -181,7 +333,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
      - *training*
 
-       Odpowiada za naukę modelu przewidywania etykiet. Wykonywany jest wielokrotnie podczas trwania projektu. Dla każdego treningu wyznaczana jest dokładność jak i precyzja. Proces ten jest o tyle fascynujący, że reagują na bieżące postępy projektu. Jeżeli jesteśmy na etapie *wstępnego oznaczania* to nawet jeżeli nic nie będziemy zmieniać tylko potwierdzać przypuszczenia i oznaczenia modelu, to zatwierdzone przez nas wyniki będą  wykorzystane do kolejnych treningów. Wtedy występuje sytuacja, że model uczy się w pełni sam i poprawia swoje wyniki. 
+       Odpowiada za naukę modelu przewidywania etykiet. Wykonywany jest wielokrotnie podczas trwania projektu. Dla każdego treningu wyznaczana jest dokładność jak i precyzja. Proces ten jest o tyle fascynujący, że reagują na bieżące postępy projektu. Jeżeli jesteśmy na etapie *wstępnego oznaczania* to nawet jeżeli nic nie będziemy zmieniać tylko potwierdzać przypuszczenia i oznaczenia modelu, to zatwierdzone przez nas wyniki będą  wykorzystane do kolejnych treningów. Wtedy występuje sytuacja, że model uczy się w pełni sam i poprawia swoje wyniki.
 
        ![](aml-screens/7_traning_runs.PNG)
 
@@ -199,7 +351,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
      ![](aml-screens/6_dashboard.PNG)
 
-     
+
 
      Narzędzie umożliwia utworzenie **4 rodzajów projektów**:
 
@@ -207,7 +359,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
      - ##### **Image Classification Multi-class**
 
-       Projekt, który umożliwia oznaczenie obrazu tylko jedną klasą z zestawu klas. 
+       Projekt, który umożliwia oznaczenie obrazu tylko jedną klasą z zestawu klas.
        Obejmuje wszystkie omówione wcześniej 3 etapy.
 
        ![](aml-screens/gifs/work-multiclass.gif)
@@ -232,9 +384,9 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
          ![](aml-screens/9_multiclass_coco2.PNG)
 
-       - ***OCENA DZIAŁANIA - 5/5*** 
+       - ***OCENA DZIAŁANIA - 5/5***
 
-         AML Data Labeling w tym rodzaju projektu bardzo dobrze radzi sobie z przyporządkowywaniem obrazów do poszczególnych klas. Oznaczenie dużych zbiorów obrazów przebiega bardzo szybko i przyjemnie. Fascynującym aspektem jest to, że kiedy model wstępnie oznaczy nam obrazy a my go będziemy utwierdzać w jego predykcjach, nasza praca ograniczy się wyłącznie do klikania przycisku *PRZEŚLIJ*. 
+         AML Data Labeling w tym rodzaju projektu bardzo dobrze radzi sobie z przyporządkowywaniem obrazów do poszczególnych klas. Oznaczenie dużych zbiorów obrazów przebiega bardzo szybko i przyjemnie. Fascynującym aspektem jest to, że kiedy model wstępnie oznaczy nam obrazy a my go będziemy utwierdzać w jego predykcjach, nasza praca ograniczy się wyłącznie do klikania przycisku *PRZEŚLIJ*.
 
      - ##### **Image Classification Multi-label**
 
@@ -260,7 +412,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
          ![](aml-screens/11_multilabel_coco2.PNG)
 
-         - ***OCENA DZIAŁANIA - 4/5*** 
+         - ***OCENA DZIAŁANIA - 4/5***
 
            AML dla tego projektu jest na pewno ułatwieniem w procesie oznaczania zdjęć. Ogromny wpływ na otrzymane wyniki ma zbiór danych oraz jego wstępne oznaczanie. Warto używać go dla projektów, gdzie trzeba oznaczyć tysiące zdjęć. W przypadku o ilości mniejszej niż 1000, nie ma sensu używać tego rodzaju projektu.
 
@@ -268,7 +420,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
        Umożliwia przypisywania klasy oraz zdefiniowania obwiedni, czyli określenia dokładnego położenia reprezentanta danej klasy.
 
-       Po początkowym ręcznym oznaczeniu 400-500 zdjęć, następuje przejście do etapu *wstępnego oznaczania*. W tym podejściu nie ma etapu klastrowania. ML oznacza elementy i radzi sobie z tym bardzo dobrze. 
+       Po początkowym ręcznym oznaczeniu 400-500 zdjęć, następuje przejście do etapu *wstępnego oznaczania*. W tym podejściu nie ma etapu klastrowania. ML oznacza elementy i radzi sobie z tym bardzo dobrze.
 
        ![](aml-screens/gifs/work-bbox.gif)
 
@@ -301,7 +453,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
          - ***OCENA DZIAŁANIA - 5/5***
 
-           Narzędzie to w znaczny sposób poprawia pracę nad oznaczaniem zbioru. Jeżeli mamy odpowiednie fundusze oraz mały zespół oraz zbiór liczący tysiące elementów, możemy poświęcić część zbioru. Możemy oznaczyć początkowe obrazy sposobem mniej dokładnym oraz oznaczać tylko elementy wyraźne i znaczące. Modelowi wystarczy to do treningu, po czym sam będzie proponował dokładniejsze oznaczenia. 
+           Narzędzie to w znaczny sposób poprawia pracę nad oznaczaniem zbioru. Jeżeli mamy odpowiednie fundusze oraz mały zespół oraz zbiór liczący tysiące elementów, możemy poświęcić część zbioru. Możemy oznaczyć początkowe obrazy sposobem mniej dokładnym oraz oznaczać tylko elementy wyraźne i znaczące. Modelowi wystarczy to do treningu, po czym sam będzie proponował dokładniejsze oznaczenia.
 
        - ##### **Instance Segmentation Polygon-Preview**
 
@@ -354,9 +506,8 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
      - trudno w pełni określić koszty, można "tylko" szacować
      - Multi-label Image Classificatication oraz Instance Segmentation
-     - nie ma możliwości powrotu do raz pominiętego obrazu 
+     - nie ma możliwości powrotu do raz pominiętego obrazu
 
-2. ### dasdddasd
 
 3. ### Make-sens
 
@@ -400,7 +551,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
      - **punkty (wsparcie AI)**
 
-       Istnieje również możliwość oznaczania obrazu punktami. Dzięki temu możemy oznaczyć zbiory, które pomogą nam zbadać postawy ciała. W tym przypadku pomoże nam AI. 
+       Istnieje również możliwość oznaczania obrazu punktami. Dzięki temu możemy oznaczyć zbiory, które pomogą nam zbadać postawy ciała. W tym przypadku pomoże nam AI.
 
        ![](make-sens/points.gif)
 
@@ -443,7 +594,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
      - SSD dla gorszej jakości zdjęć bardziej utrudnia, niż pomaga w realizacji projektu
      - brak możliwości pracy w grupie
 
-4. ### Kili Technology
+4. #### Kili Technology
 
    *[Kili Technology](https://kili-technology.com/)* to narzędzie do adnotacji obrazu, tekstu i głosu, zaprojektowane, aby pomóc firmom w szybszym wdrażaniu aplikacji uczenia maszynowego.
 
@@ -553,7 +704,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
      Narzędzie w prosty sposób może przyspieszyć proces etykietowania danych. Umożliwia wsparcie Machine Learningu, jednak musimy posiadać własny model i dołączyć go do procesu w celu wstępnego dodania adnotacji. Intuicyjne interfejsy oraz możliwość pracy w grupie nad zbiorem
 
    - ***<u>ZALETY</u>***
-     
+
      - łatwe dodanie danych po przez "przeciągnij i upuść"
      - monitorowanie jakości produkcji za pomocą wskaźników
      - export danych do pliku JSON dla formatu Google API
@@ -564,7 +715,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
      - w przypadku użycia ML - względnie wysoki próg wejścia
      - przy jednokrotnym ładowanie do zbioru możemy dodawać do 500 obrazów, ale dany zbiór możemy poszerzać wielokrotnie
 
-5. ### Yolo_label
+2. #### Yolo_label
 
    Proste narzędzie do oznaczenia zbioru danych. Pliki wyjściowe są w formacie .txt, a oznaczenia są w formacie YOLO. Oznacza to, że każda linia w pliku opisuje pojedynczy oznaczony obiek:
 
@@ -598,7 +749,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
    - *<u>**OCENA DZIAŁANIA - 2/5**</u>*
 
-     Jest to proste narzędzie jednak ograniczone. Pozwala na jeden format wynikowy (zgodny z YOLO) oraz nie pozwala na pracę grupową. 
+     Jest to proste narzędzie jednak ograniczone. Pozwala na jeden format wynikowy (zgodny z YOLO) oraz nie pozwala na pracę grupową.
 
    - ***<u>ZALETY</u>***
      - Intuicyjna obsługa
@@ -607,9 +758,9 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
      - niski próg wejścia
    - ***<u>WADY</u>***
      - brak wsparcia Machine Learning
-     - brak możliwości pracy w grupie 
+     - brak możliwości pracy w grupie
 
-6. ### Google Cloud AI Platform Data Labeling Service
+6. #### Google Cloud AI Platform Data Labeling Service
 
    Niestety nie mogliśmy przetestować tej usługi, ponieważ została zablokowana z powodu pandemii.
 
