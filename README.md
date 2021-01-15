@@ -52,7 +52,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 |   4   |             Analiza *Azure Machine Learning*             |       do 10.01.20       |     MM     |   X   |
 |   5   |                   Analiza *Yolo_label*                   |       do 10.01.20       |     MM     |   X   |
 |   6   |    Analiza *Awesome Data Labeling - Kili Technology*     |       do 13.01.20       |     MM     |   X   |
-|   7   |                   Analiza *Make-sens*                    |       do 15.01.20       |     MM  
+|   7   |                   Analiza *Make-sens*               |       do 15.01.20       |     MM  
 |   x   |  
 |   8   |                      Analiza *CVAT*                      |       do 16.01.20       |     JK     |   x   |
 |   9   |                  Analiza *Label Studio*                  |       do 16.01.20       |     JK     |       |
@@ -98,7 +98,7 @@ Generalnie dostępne zbiory służą do uczenia algorytmów, które można zgła
 
 Zbiory można przeglądać za pomocą [Coco explorer'a](https://cocodataset.org/#explore) przedstawionego niżej:
 
-![coco explorer](coco/coco explorer.gif)
+![coco-explorer](coco/coco-explorer.gif)
 
 Aby móc obsłużyć opracowane zbiory danych powstał projekt [datumaro](https://github.com/openvinotoolkit/datumaro). Poradnik można znaleźć [tutaj]( https://github.com/openvinotoolkit/datumaro/blob/develop/docs/user_manual.md) Umożliwia on między innymi:
 
@@ -122,7 +122,7 @@ Aby móc obsłużyć opracowane zbiory danych powstał projekt [datumaro](https:
 
 Aby móc wykorzystywać udostępnione zbiory należy wykorzystać udostępnione [COCO API](https://github.com/cocodataset/cocoapi), które wykorzystuje wcześniej wspomniany projekt datumaro. API można wykorzystywać za pomocą Lua, Matlaba oraz Pythona. Do testów został wykorzystany Python, czego rezultat można ujrzeć poniżej. Nie obyło się bez problemów, użytkowników windows'a zalecamy do zerknięcia do [tego repozytorium](https://github.com/philferriere/cocoapi)
 
-![python api](coco/pyhon-api.gif)
+![python-api](coco/pyhon-api.gif)
 
 
 
@@ -183,30 +183,76 @@ Do dyspozycji również mamy REST API, którego dokumentacje można znaleźć po
 
 Sam proces utworzenia projektu oraz zadań, jest bardzo prosty. Co widać na poniższym gifie.
 
-![cvat generation project](cvat\gen-project.gif)
+![cvat generation project](cvat/gen-project.gif)
 
 ##### Dodawanie adnotacji
 
 Czynność tą można wykonywać myszką lub klawiaturą za pomocą skrótów klawiszowych. Aby poznać skróty klawiszowe należy nacisnąć F1.
 
-* standardowe dodawanie obiektów
+* standardowe dodawanie etykiet
 
   * bounding box
-    ![standard bb](cvat\standard-bb.gif)
+    ![standard-bb](cvat/standard-bb.gif)
 
   * polygon - manual
 
-    ![standard bb](cvat\standard-polygon.gif)
+    ![standard-bb](cvat\standard-polygon.gif)
 
 
   * polygon - AI tool
 
-![standard bb](cvat\standard-polygon-ai.gif)
+![standard-bb](cvat/standard-polygon-ai.gif)
 
 * tag annotation - tagowanie zdjęć
-  ![standard bb](cvat\tag-annotation.gif)
+  ![standard-bb](cvat/tag-annotation.gif)
 
+2. #### Yolo_label
 
+Proste narzędzie do oznaczenia zbioru danych. Pliki wyjściowe są w formacie .txt, a oznaczenia są w formacie YOLO. Oznacza to, że każda linia w pliku opisuje pojedynczy oznaczony obiek:
+
+```
+NUMER_KLASY X_MIN Y_MIN SZEROKOŚĆ WYSOKOŚĆ
+```
+
+Wartości określające pozycje zdjęcia występują w postaci znormalizowanej - z przedziału <0, 1>. Pliki wyjściowe otrzymują nazwę pokrywającą się z nazwą oznaczanego zdjęcia.
+
+W celu skorzystania z programu, należy pobrać go ([LINK](https://drive.google.com/file/d/1lanO8SyY2QlbVCbOR0LlwQjQYbhoteTd/view)), a następnie uruchomić *YoloLabel.exe*. Po uruchomieniu należy wybrać folder, w którym powinny znajdować się **tylko i wyłącznie** zdjęcia do oznaczenia. Następnie należy wczytać plik z nazwami poszczególnych klas, w postaci pliki *.txt* lub *.names*. Wewnątrz niego w pojedynczych liniach powinny znajdować się nazwy klas:
+
+> daisy
+>
+> rose
+>
+> sunflower
+
+Następnie należy oznaczać poszczególne zdjęcia:
+
+![](yolo-label/yolo.gif)
+
+W folderze ze zdjęciami tworzone są pliki z oznaczeniami:
+
+![](yolo-label/txt_files.PNG)
+
+Struktura pliku dla oznaczonego zdjęcia wygląda następująco:
+
+> 0 0.252392 0.540074 0.431818 0.535142
+>
+> 0 0.739234 0.471640 0.504785 0.585697
+
+- *<u>**OCENA DZIAŁANIA - 2/5**</u>*
+
+  Jest to proste narzędzie jednak ograniczone. Pozwala na jeden format wynikowy (zgodny z YOLO) oraz nie pozwala na pracę grupową.
+
+- ***<u>ZALETY</u>***
+
+  - Intuicyjna obsługa
+  - prosta instalacja
+  - darmowa aplikacja
+  - niski próg wejścia
+
+- ***<u>WADY</u>***
+
+  - brak wsparcia Machine Learning
+  - brak możliwości pracy w grupie
 
 ### Rozbudowane narzędzia do trenowania algorytmu
 
@@ -354,90 +400,90 @@ Czynność tą można wykonywać myszką lub klawiaturą za pomocą skrótów kl
 
 
      Narzędzie umożliwia utworzenie **4 rodzajów projektów**:
-
+    
      ![](aml-screens/1_task_type.PNG)
-
+    
      - ##### **Image Classification Multi-class**
-
+    
        Projekt, który umożliwia oznaczenie obrazu tylko jedną klasą z zestawu klas.
        Obejmuje wszystkie omówione wcześniej 3 etapy.
-
+    
        ![](aml-screens/gifs/work-multiclass.gif)
-
+    
        W doświadczeniach przejście do 2 etapu następowało przy oznaczeniu około 400-450 obrazów. Po przejściu do etapy *klastrowania*, aby jak najszybciej osiągnąć etap *wstępnego oznaczania* wystarczyło oznaczyć 100-200 zgrupowanych obrazów i poczekać, aż ruszy kolejny trening. Wtedy to liczba zdjęć *wstępnie oznaczonych* ulega zwiększeniu, a kiedy my dodatkowo potwierdzimy poprawność oznaczeń, wpłynie to pozytywnie na wyniki kolejnych treningów.
-
+    
        Wyniki można wyeksportować na dwa sposoby:
-
+    
        - dataset
-
+    
          Takie rozwiązanie może w łatwy sposób umożliwić użycie naszego zbioru w kolejnych serwisach.
-
+    
          ![](aml-screens/8_multiclass_dataset.PNG)
-
+    
        - coco
-
+    
          Plik wynikowy jest w formacie wynikowym, gdzie na początku pliku mamy opisane nasz zbiór danych:
-
+    
          ![](aml-screens/9_multiclass_coco1.PNG)
-
+    
          Następnie zapisane są oznaczenia:
-
+    
          ![](aml-screens/9_multiclass_coco2.PNG)
-
+    
        - ***OCENA DZIAŁANIA - 5/5***
-
+    
          AML Data Labeling w tym rodzaju projektu bardzo dobrze radzi sobie z przyporządkowywaniem obrazów do poszczególnych klas. Oznaczenie dużych zbiorów obrazów przebiega bardzo szybko i przyjemnie. Fascynującym aspektem jest to, że kiedy model wstępnie oznaczy nam obrazy a my go będziemy utwierdzać w jego predykcjach, nasza praca ograniczy się wyłącznie do klikania przycisku *PRZEŚLIJ*.
-
+    
      - ##### **Image Classification Multi-label**
-
+    
        Projekt ten umożliwia oznaczenie obrazów wieloma klasami z zestawu klas. Obejmuje wszystkie omówione wcześniej 3 etapy.
-
+    
        Przejście do drugiego etapu wymaga oznaczenie standardowo około 400-450 zdjęć. Pierwsze treningi i propozycje grupowania obrazów zdają się działać na tyle źle, że ciężko odróżnić dobór zdjęć w etapie grupowania od zdjęć w etapie ręcznego oznaczania. Po oznaczeniu w sumie ok 900-1000 zdjęć, zaobserwowano faktyczne grupowanie obrazów. Początkowo na 6/9 obrazach można było wyszukać wspólną klasę jednak podpowiedzi modelu były bardzo nieintuicyjne. Po osiągnięciu 1200 oznaczonych obrazów, klastrowanie przebiegało falowo. Kilka siatek 9 obrazów z bardzo dobrze wyselekcjonowanymi zdjęciami, po czym wiele siatek ze średnio pogrupowanymi obrazami.
-
+    
        ![](aml-screens/gifs/work-multilabel.gif)
-
+    
        Podczas testów nie udało się osiągnąć etapu *wstępnego oznaczania*. Może mieć to wiele przyczyn, zaczynając od niejasnego zbioru danych, kończąc na błędach w oznaczaniu lub niedokładnym oznaczaniem obrazów. Brak osiągnięcia tego etapu może być również skutkiem tego, że trenowane modele nie do końca dobrze radzą sobie z problemem oznaczanie obrazów wieloma klasami.  Dla jednej klasy (poprzedni rodzaj projektu) wychodzi to świetnie.
-
+    
        Używano do 5 klas, co można uznać za średnią ilość.  Naturalnie najlepiej grupowane były te zdjęcia, których oznaczeń wcześniej wystąpiło najwięcej.
-
+    
        Jak w poprzednim projekcie dane możemy otrzymać na 2 sposoby:
-
+    
        - dataset
-
+    
          ![](aml-screens/10_multilabel_dataset.PNG)
-
+    
        - coco
-
+    
          ![](aml-screens/11_multilabel_coco1.PNG)
-
+    
          ![](aml-screens/11_multilabel_coco2.PNG)
-
+    
          - ***OCENA DZIAŁANIA - 4/5***
-
+    
            AML dla tego projektu jest na pewno ułatwieniem w procesie oznaczania zdjęć. Ogromny wpływ na otrzymane wyniki ma zbiór danych oraz jego wstępne oznaczanie. Warto używać go dla projektów, gdzie trzeba oznaczyć tysiące zdjęć. W przypadku o ilości mniejszej niż 1000, nie ma sensu używać tego rodzaju projektu.
-
+    
      - ##### **Object Identyfication - Bounding Box**
-
+    
        Umożliwia przypisywania klasy oraz zdefiniowania obwiedni, czyli określenia dokładnego położenia reprezentanta danej klasy.
-
+    
        Po początkowym ręcznym oznaczeniu 400-500 zdjęć, następuje przejście do etapu *wstępnego oznaczania*. W tym podejściu nie ma etapu klastrowania. ML oznacza elementy i radzi sobie z tym bardzo dobrze.
-
+    
        ![](aml-screens/gifs/work-bbox.gif)
-
+    
        Naturalnie im lepiej zostaną oznaczone początkowe obrazy, tym w lepszy sposób tagowane są kolejne oraz tym szybciej można osiągnąć etap *wstępnego oznaczania*.
-
+    
        Przeprowadzono test w którym nie oznaczano wszystkich elementów oraz nie robione tego w sposób dokładny. Sieć jednak była w stanie nauczyć się na podstawie tych wykonanych czynności i sama oznaczać zdjęcia w znacznie lepszy sposób, niż oznaczone ręcznie obrazy.
-
+    
        Standardowo dane możemy otrzymać na 2 sposoby:
-
+    
        - dataset
-
+    
          ![](aml-screens/12_obj_ident.PNG)
-
+    
        - coco
-
+    
          Na początku są definiowane obrazy. W dalszej części zapisane są oznaczenia. Zapisana jest powierzchnia względem całego obrazu w skali 0-1. W *"bbox"* zapisana jest lokalizacja obiektu w postaci znormalizowanej:
-
+    
          ```
          "bbox": [
          	topX,
@@ -446,40 +492,40 @@ Czynność tą można wykonywać myszką lub klawiaturą za pomocą skrótów kl
          	wysokość obiektu
          ]
          ```
-
+    
          ![](aml-screens/13_obj_ident_coco1.PNG)
-
+    
          ![](aml-screens/13_obj_ident_coco2.PNG)
-
+    
          - ***OCENA DZIAŁANIA - 5/5***
-
+    
            Narzędzie to w znaczny sposób poprawia pracę nad oznaczaniem zbioru. Jeżeli mamy odpowiednie fundusze oraz mały zespół oraz zbiór liczący tysiące elementów, możemy poświęcić część zbioru. Możemy oznaczyć początkowe obrazy sposobem mniej dokładnym oraz oznaczać tylko elementy wyraźne i znaczące. Modelowi wystarczy to do treningu, po czym sam będzie proponował dokładniejsze oznaczenia.
-
+    
        - ##### **Instance Segmentation Polygon-Preview**
-
+    
          Jest to format który nie wspiera Azure Machine Learning. Umożliwia oznaczanie obrazów w o wile bardziej dokładny sposób. Jednak brak ML, który by wspierał proces sprawia, że jest to tylko porządny edytor do oznaczania zdjęć.
-
+    
          ![](aml-screens/gifs/work-polygon.gif)
-
+    
          Standardowe uzyskanie wyników:
-
+    
          - dataset
-
+    
            ![](aml-screens/14_poly_dataset.PNG)
-
+    
          - coco
-
+    
            Oprócz oznaczenia ogólnego po przez *bbox*, mamy oznaczoną segmentację. Zapisane są tam wszystkie wierzchołki, które tworzą dany obszar po przez pary wartości X oraz Y.
-
+    
            ![](aml-screens/15_poly_coco1.PNG)
-
+    
            ![](aml-screens/15_poly_coco2.PNG)
 
    - ***OCENA DZIAŁANIA - 3.5/5***
 
      Jest to dobry edytor, który co najważniejsze umożliwia pracę w zespole nad jednym zbiorze danych. Ze względu na brak wsparcia AML, nie można ocenić go lepiej. Samo korzystanie z narzędzia jest bardzo intuicyjne.
 
-   ------
+------
 
    - ***<u>WNIOSKI</u>***
      - Niezależnie od rodzaju projektu, sposób oznaczania obrazów jest bardzo intuicyjny i nie wymaga długiego szkolenia, żeby opanować pracę w tym środowisku.
@@ -714,51 +760,6 @@ Czynność tą można wykonywać myszką lub klawiaturą za pomocą skrótów kl
      - konieczność posiadania własnego modelu w celu wsparci ML
      - w przypadku użycia ML - względnie wysoki próg wejścia
      - przy jednokrotnym ładowanie do zbioru możemy dodawać do 500 obrazów, ale dany zbiór możemy poszerzać wielokrotnie
-
-2. #### Yolo_label
-
-   Proste narzędzie do oznaczenia zbioru danych. Pliki wyjściowe są w formacie .txt, a oznaczenia są w formacie YOLO. Oznacza to, że każda linia w pliku opisuje pojedynczy oznaczony obiek:
-
-   ```
-   NUMER_KLASY X_MIN Y_MIN SZEROKOŚĆ WYSOKOŚĆ
-   ```
-
-   Wartości określające pozycje zdjęcia występują w postaci znormalizowanej - z przedziału <0, 1>. Pliki wyjściowe otrzymują nazwę pokrywającą się z nazwą oznaczanego zdjęcia.
-
-   W celu skorzystania z programu, należy pobrać go ([LINK](https://drive.google.com/file/d/1lanO8SyY2QlbVCbOR0LlwQjQYbhoteTd/view)), a następnie uruchomić *YoloLabel.exe*. Po uruchomieniu należy wybrać folder, w którym powinny znajdować się **tylko i wyłącznie** zdjęcia do oznaczenia. Następnie należy wczytać plik z nazwami poszczególnych klas, w postaci pliki *.txt* lub *.names*. Wewnątrz niego w pojedynczych liniach powinny znajdować się nazwy klas:
-
-   > daisy
-   >
-   > rose
-   >
-   > sunflower
-
-   Następnie należy oznaczać poszczególne zdjęcia:
-
-   ![](yolo-label/yolo.gif)
-
-   W folderze ze zdjęciami tworzone są pliki z oznaczeniami:
-
-   ![](yolo-label/txt_files.PNG)
-
-   Struktura pliku dla oznaczonego zdjęcia wygląda następująco:
-
-   > 0 0.252392 0.540074 0.431818 0.535142
-   >
-   > 0 0.739234 0.471640 0.504785 0.585697
-
-   - *<u>**OCENA DZIAŁANIA - 2/5**</u>*
-
-     Jest to proste narzędzie jednak ograniczone. Pozwala na jeden format wynikowy (zgodny z YOLO) oraz nie pozwala na pracę grupową.
-
-   - ***<u>ZALETY</u>***
-     - Intuicyjna obsługa
-     - prosta instalacja
-     - darmowa aplikacja
-     - niski próg wejścia
-   - ***<u>WADY</u>***
-     - brak wsparcia Machine Learning
-     - brak możliwości pracy w grupie
 
 6. #### Google Cloud AI Platform Data Labeling Service
 
