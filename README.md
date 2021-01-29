@@ -1084,6 +1084,98 @@ Możliwe jest również opracowanie własnego frontendu. Repozytorium, które pe
      - brak mechanizmów przyspieszających oznaczanie zdjęć
 
 
+7. #### Labelbox
+
+[Labelbox](https://labelbox.com/) to środowisko, które pozwala na oznaczanie zdjęć oraz tekstu. Istnieje pewne organicznie, bezpłatnie można oznaczyć do 2,5k zdjęć rocznie. Więcej informacji o kosztach można znaleźć [tutaj](https://labelbox.com/pricing). Warto również wspomnieć, że można ubiegać się o dostęp w ramach [programu akademickiego](https://labelbox.com/academic), wówczas środowisko jest bezpłatne, ale nie może być wykorzystywane do celów komercyjnych.
+
+##### Oznaczanie zdjęć
+
+Warto dodać, że możliwa jest dowolna konfiguracja oznaczania zdjęć - można wykorzystywać kilka poniższych trybów jednocześnie.
+
+* [Bounding Box](https://labelbox.com/docs/tools/bbox)
+
+Umożliwia oznaczanie konkretnych obszarów na obrazie zdefiniowanymi klasami. Obszar jest w kształcie prostokąta.
+
+<img src="labelbox/Bounding-Box.gif" alt="brush-labels"  />
+
+* [Point](https://labelbox.com/docs/tools/point)
+
+Umożliwia oznaczanie konkretnych punktów zdefiniowanymi klasami
+
+<img src="labelbox/Point.gif" alt="brush-labels"  />
+
+* [Polygon](https://labelbox.com/docs/tools/polygons)
+
+Umożliwia oznaczanie konkretnych obszarów na obrazie zdefiniowanymi klasami. Obszar jest w kształcie polygon'u. Z pośród wszystkich testowanych środowisk, te wypadło **zdecydowanie najgorzej** po względem wygody zaznaczania. Często podczas zaznaczania punktów, UI uznaje, że kliknąłem obok ostatnio zaznaczonego punktu co skutkuje zakończeniem zaznaczania. Myślę, że wykorzystując [CVAT](#CVAT), byłym w stanie zaznaczyć te obszary dwukrotnie szybciej. 
+
+<img src="labelbox/Polygon.gif" alt="brush-labels"  />
+
+* [Polyline](https://labelbox.com/docs/tools/polyline)
+
+Umożliwia oznaczanie konkretnych linii na obrazie zdefiniowanymi klasami.
+
+<img src="labelbox/Polyline.gif" alt="brush-labels"  />
+
+* [Segmentation](https://labelbox.com/docs/tools/image-seg)
+
+Umożliwia oznaczanie konkretnych obszarów na obrazie zdefiniowanymi klasami. Obszar jest zaznaczany za pomocą, narzędzia przypominającego ołówek.
+
+<img src="labelbox/Segmentation.gif" alt="brush-labels"  />
+
+* [Image classification](https://labelbox.com/docs/tools/image-classfication)
+  Pozwala na etykietowanie zdjęć, dostępne jest kilka trybów.
+
+  * Checklist
+
+  * Radio
+
+  * Free-form text
+
+  * Dropdown
+    Na poniższym przykładzie przedstawiono tryb *Dropdown*
+
+    <img src="labelbox/Dropdown.gif" alt="brush-labels"  />
+
+##### Koperacja
+
+Możliwa jest współpraca osób w ramach jednego projektu. W przypadku wersji **bezpłatnej** obowiązuje **limit do 5 osób** w zespole. Możliwy jest również podział ról na:
+
+* **Labeler** - osoba oznaczająca zdjęcia
+* **Reviewer** - osoba, która dodatkowo może zatwierdzać, wykonane oznaczenia zdjęć
+* **Team manager** - osoba, która dodatkowo może edytować uprawnienia wewnątrz danego projektu
+* **Admin** - osoba, która może modyfikować projekty, dodawać usuwać zdjęcia.
+
+##### Eksportowanie rezultatów
+
+Rezultaty można eksportować tylko i wyłącznie do:
+
+* JSON
+* CSV
+
+##### Inne możliwości
+
+Środowisko te również udostępnia [Python SDK](https://labelbox.com/docs/python-api/getting-started) oraz [GraphQL API (tylko w wersj za $$$)](https://labelbox.com/docs/api/graphql-intro). Dostępne są również rozwiązania pozwalające na wstępne oznaczanie zdjęć takie jak: [Model-assisted labeling](https://labelbox.com/docs/automation/model-assisted-labeling) oraz [Real-time human-in-the-loop labeling](https://labelbox.com/docs/automation/real-time-labeling), jednak są to rozwiązania płatne (nie open-source), z tego względu są pominięte w analizie możliwości. 
+
+*<u>**OCENA - 2/5**</u>*
+
+Proste narzędzie, które w zależności od budżetu lub statusu uczelnianego umożliwia rozbudowanie możliwości o np. uczenie modeli, pozwalających wstępne oznaczanie zdjęć.
+
+Z pośród wszystkich testowanych środowisk, w mojej ocenie, środowisko te cechuje się najgorszą ergonomią. Skutkuje to dłuższym czasem oznaczania zdjęć. Dodatkowo, mam ważenie, że środowisko te działa nieco wolniej. Raz miałem przypadek, w którym środowisko to zawiesiło mi się i musiałem odświeżyć stronę
+
+- ***<u>ZALETY</u>***
+  - przy pewnym budżecie lub uzyskania dostępu w ramach programu akademickiego możliwość rozszerzenia możliwości o wstępne oznaczanie zdjęć w ramach wytrenowanych modeli.
+  - możliwość kooperacji
+  - możliwość wykorzystywania kilku trybów oznaczania zdjęć jednocześnie
+  - możliwość oznaczania również tekstów
+- ***<u>WADY</u>***
+  - słaba ergonomia
+  - wolne działanie
+  - są pewne bardziej zawansowane możliwości, ale są płatne
+  - trzeba przesyłać obrazy na serwer
+  - obsługiwane formaty to tylko i wyłącznie: JSON oraz CSV
+
+
+8. #### Google Cloud AI Platform Data Labeling Service
 
    Niestety nie mogliśmy przetestować tej usługi, ponieważ została zablokowana z powodu pandemii.
 
