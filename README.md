@@ -27,7 +27,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 ***Inne technologie:***
 
 - [Cvat](#Cvat)
-- [Label Studio](#Label Studio)
+- [Label Studio](#Label-Studio)
 - [Labelbox](#Labelbox)
 - [Make-sens](#Make-sens)
 - [Kili Technology](#Kili-Technology)
@@ -812,7 +812,278 @@ Struktura pliku dla oznaczonego zdjęcia wygląda następująco:
      - w przypadku użycia ML - względnie wysoki próg wejścia
      - przy jednokrotnym ładowanie do zbioru możemy dodawać do 500 obrazów, ale dany zbiór możemy poszerzać wielokrotnie
 
-6. #### Google Cloud AI Platform Data Labeling Service
+6. #### Label Studio
+
+*[Label Studio](https://labelstud.io/)* to środowisko służące do etykietowania danych takich jak: obrazy, dźwięki, tekst, szeregi czasowe czy kombinacje tych danych. Środowisko te udostępniane jest jako open source, istnieje również wersja enterprise pod nazwą [Heartex](https://heartex.com/product). Repozytorium label studio można znaleźć [tutaj](https://github.com/heartexlabs/label-studio). Firmami, które wykorzystują te narzędzie jest między innymi FB, IMB, Nvidia, Intel.
+
+##### Instalacja
+
+Interfejs użytkownika jest oparty o interfejs webowy.  Server możemy postawić za pomocą:
+
+* pip
+* Anacoda
+* docker
+* docker-compose
+
+##### Oznaczanie zdjęć
+
+To co jest nietypowe oraz warte uwagi to definiowanie trybu adnotacji. W przeciwieństwie do większości narzędzi w których wybieramy tryb oznaczania zdjęć, w tym środowisku tryb definiujemy sobie za pomocą XML. Dokumentacje XML można znaleźć [tutaj](https://labelstud.io/tags/image.html)
+
+* [BrushLabels](https://labelstud.io/tags/brushlabels.html)
+```xml
+<View>
+  <BrushLabels name="labels" toName="image">
+    <Label value="Car" />
+  </BrushLabels>
+  <Image name="image" value="https://cdn.pixabay.com/photo/2016/11/23/15/32/architecture-1853552_960_720.jpg" />
+</View>
+```
+<img src="label-studio/BrushLabels.gif" alt="brush-labels" style="zoom:150%;" />
+
+```json
+[
+    {
+        "original_width": 960,
+        "original_height": 637,
+        "value": {
+            "format": "rle",
+            "rle": [
+                0,
+                37,
+                83,
+                0,
+                ...
+```
+
+* [Choice](https://labelstud.io/tags/choice.html)
+
+```xml
+<View>
+  <Choices name="gender" toName="image" choice="single">
+    <Choice value="Male" />
+    <Choice value="Female" />
+  </Choices>
+  <Image name="image" value="https://cdn.pixabay.com/photo/2015/09/02/13/24/girl-919048_960_720.jpg" />
+</View>
+```
+
+<img src="label-studio/Choice.gif" alt="brush-labels" style="zoom:150%;" />
+
+```json
+[
+    {
+        "value": {
+            "choices": [
+                "Female"
+            ]
+        },
+        "id": "x4RUIf_Q7F",
+        "from_name": "gender",
+        "to_name": "image",
+        "type": "choices"
+    }
+]
+```
+
+* [KeyPoint](https://labelstud.io/tags/keypoint.html)
+
+```xml
+<View>
+  <KeyPoint name="people" toName="img-1" />
+  <Image name="img-1" value="https://cdn.pixabay.com/photo/2016/11/23/15/32/architecture-1853552_960_720.jpg" />
+</View>
+```
+
+<img src="label-studio/KeyPoint.gif" alt="brush-labels" style="zoom:150%;" />
+
+```json
+[
+    {
+        "original_width": 960,
+        "original_height": 637,
+        "image_rotation": 0,
+        "value": {
+            "x": 43.190661478599225,
+            "y": 80.93841642228739,
+            "width": 0.19455252918287938
+        },
+        "id": "ApXcQ6yUuM",
+        "from_name": "people",
+        "to_name": "img-1",
+        "type": "keypoint"
+    },
+    {
+        "original_width": 960,
+        "original_height": 637,
+        "image_rotation": 0,
+        "value": {
+            "x": 46.88715953307393,
+            "y": 82.40469208211144,
+            "width": 0.19455252918287938
+        },
+        "id": "4czOhtNZG2",
+        "from_name": "people",
+        "to_name": "img-1",
+        "type": "keypoint"
+    },
+    ...
+]
+```
+
+* [KeyPointLabels ](https://labelstud.io/tags/keypointlabels.html)
+
+```xml
+<View>
+  <KeyPointLabels name="kp-1" toName="img-1">
+    <Label value="people" />
+    <Label value="car" />
+  </KeyPointLabels>
+  <Image name="img-1" value="https://cdn.pixabay.com/photo/2016/11/23/15/32/architecture-1853552_960_720.jpg" />
+</View>
+```
+
+<img src="label-studio/KeyPointLabels.gif" alt="brush-labels" style="zoom:150%;" />
+
+```json
+[
+    {
+        "original_width": 960,
+        "original_height": 637,
+        "image_rotation": 0,
+        "value": {
+            "x": 26.070038910505836,
+            "y": 86.80351906158357,
+            "width": 0.19455252918287938,
+            "keypointlabels": [
+                "car"
+            ]
+        },
+        "id": "WlrNxr1tv0",
+        "from_name": "kp-1",
+        "to_name": "img-1",
+        "type": "keypointlabels"
+    },
+    {
+        "original_width": 960,
+        "original_height": 637,
+        "image_rotation": 0,
+        "value": {
+            "x": 60.89494163424124,
+            "y": 80.35190615835778,
+            "width": 0.19455252918287938,
+            "keypointlabels": [
+                "car"
+            ]
+        },
+        "id": "Whck5dlnKC",
+        "from_name": "kp-1",
+        "to_name": "img-1",
+        "type": "keypointlabels"
+    },
+    ...
+]
+```
+
+* [PolygonLabels](https://labelstud.io/tags/polygonlabels.html)
+
+```xml
+<View>
+  <PolygonLabels name="lables" toName="img-1">
+    <Label value="Men" />
+    <Label value="Women" />
+  </PolygonLabels>
+  <Image name="img-1" value="https://cdn.pixabay.com/photo/2015/09/02/13/24/girl-919048_960_720.jpg" />
+</View>
+```
+
+<img src="label-studio/PolygonLabels.gif" alt="brush-labels" style="zoom:150%;" />
+
+```json
+[
+    {
+        "value": {
+            "points": [
+                [
+                    14.84375,
+                    98.82697947214076
+                ],
+                [
+                    16.796875,
+                    92.08211143695014
+			   ],
+			   ...
+```
+
+* [RectangleLabels](https://labelstud.io/tags/rectanglelabels.html)
+
+```xml
+<View>
+  <RectangleLabels name="labels" toName="image">
+    <Label value="Person" />
+    <Label value="Car" />
+  </RectangleLabels>
+  <Image name="image" value="https://cdn.pixabay.com/photo/2016/11/23/15/32/architecture-1853552_960_720.jpg" />
+</View>
+```
+
+<img src="label-studio/RectangleLabels.gif" alt="brush-labels" style="zoom:150%;" />
+
+```json
+[
+    {
+        "original_width": 960,
+        "original_height": 637,
+        "image_rotation": 0,
+        "value": {
+            "x": 9.53307392996109,
+            "y": 77.12609970674487,
+            "width": 31.71206225680934,
+            "height": 16.129032258064516,
+            "rotation": 0,
+            "rectanglelabels": [
+                "Car"
+            ]
+        },
+        "id": "W21dX-1Mvz",
+        "from_name": "labels",
+        "to_name": "image",
+        "type": "rectanglelabels"
+    },
+    ...
+]
+```
+
+##### Eksportowanie rezultatów
+
+W przypadku *Label Studio* rezultaty oznaczania zdjęć są zapisane w JSON'ie. Istnieje możliwość przekonwertowania rezultatów do innych formatów. Narzędziem, który umożliwia to jest  [Label Studio Converter](https://github.com/heartexlabs/label-studio-converter). Eksportuje on wyniki do:
+
+* CSV
+* CoNLL 2003
+* COCO
+* Pascal VOC XML
+
+##### Własny frontend
+
+Możliwe jest również opracowanie własnego frontendu. Repozytorium, które pełni rolę szkieletu to [Label Studio Frontend](https://github.com/heartexlabs/label-studio-frontend). Domyślny frontend jest napisany w JS oraz React.
+
+ - *<u>**OCENA - 3/5**</u>*
+
+     Proste narzędzie, bogate w możliwości dopasowania do własnych potrzeb. Zapewnia nawet możliwość utworzenia własnego frontendu. Niestety środowisko mimo dynamicznego rozwoju nie posiada metod przyspieszających pracę oraz ML 
+
+   - ***<u>ZALETY</u>***
+
+     - przyjazne UI
+     - bezpłatne narzędzie
+     - możliwość uruchomienia za pomocą pip oraz docker'a
+     - definiowanie sposobu oznaczanie zdjęć za pomocą XML
+     - możliwość utworzenia własnego UI
+     - możliwość oznaczania również dźwięków, tekstów, szeregów czasowych
+   - ***<u>WADY</u>***
+     - brak możliwości bezpłatnej kooperacji 
+     - ML na etapie wdrażania
+     - brak mechanizmów przyspieszających oznaczanie zdjęć
+
+
 
    Niestety nie mogliśmy przetestować tej usługi, ponieważ została zablokowana z powodu pandemii.
 
