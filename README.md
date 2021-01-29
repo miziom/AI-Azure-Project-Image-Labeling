@@ -448,7 +448,7 @@ Czynność tą można wykonywać myszką oraz klawiaturą za pomocą skrótów k
 
   * polygon - AI tool - segmentacja pół-autoatyczna
 
-<img src="cvat/standard-polygon-ai.gif" alt="standard-bb" style="zoom:150%;" />
+<img src="cvat\standard-polygon-ai.gif" alt="polygon-AI" style="zoom:150%;" />
 
 Wspierane jest również szybka segmentacja podobnych do siebie obrazów, za pomocą zarówno bounding-box jak i polygon.
 
