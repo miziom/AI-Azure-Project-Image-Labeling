@@ -39,6 +39,7 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 - [ZBIÓR KWAITÓW](https://www.kaggle.com/alxmamaev/flowers-recognition)
 - [Open Images Dataset V6](https://storage.googleapis.com/openimages/web/index.html)
 - [Dog Api](https://dog.ceo/dog-api/breeds-list)
+- [COCO](#Coco-Annotator)
 
 ### Kalendarz
 
@@ -75,64 +76,6 @@ Formaty adnotacji zdjęć:
 * [ImageNet](http://image-net.org/)
 * [CamVid](https://mi.eng.cam.ac.uk/research/projects/VideoRec/CamVid/)
 * [LabelMe](http://labelme.csail.mit.edu/Release3.0/)
-
-### Zbiory danych
-
-Nie od dziś wiadomo, że algorytmy wykorzystujące głębokie uczenie (ang. deep learning) wymagają dużych zbiorów danych. Z tego powodu warto wspomóc się ogólnodostępnymi bazami zdjęć.
-
-1. #### Coco-Annotator
-
-COCO to zakrojony na szeroką skalę zbiór danych dotyczących wykrywania (ang. *detection*) obiektów, segmentacji (ang. *segmentation*) i podpisywania (ang. *captioning*).
-
-COCO w liczbach:
-
-* 330k zdjęć (>200k z etykietami)
-* 80 kategorii obiektów
-
-Generalnie dostępne zbiory służą do uczenia algorytmów, które można zgłaszać w corocznych konkursach organizowanych przez COCO. Z tego powodu sinieją różne kombinacje zdjęć. Z czego najpopularniejsza to 2017 Train/Val/Test
-
-Zbiory można przeglądać za pomocą [Coco explorer'a](https://cocodataset.org/#explore) przedstawionego niżej:
-
-![coco-explorer](coco/coco-explorer.gif)
-
-Aby móc obsłużyć opracowane zbiory danych powstał projekt [datumaro](https://github.com/openvinotoolkit/datumaro). Poradnik można znaleźć [tutaj]( https://github.com/openvinotoolkit/datumaro/blob/develop/docs/user_manual.md) Umożliwia on między innymi:
-
-* tworzenie projektów
-* odczytywanie, zapisywanie oraz konwersja zbiorów w formatach:
-  * COCO
-  * PASCAL VOD
-  * YOLO
-  * TF Detection API
-  * WIDER Face
-  * MOT sqeuences
-  * MOTS PNG
-  * ImageNet
-  * CamVid
-  * LabelMe
-  * CVAT
-* filtrowanie podzbioru np. ze względu na brak adnotacji określonej klasy
-* łączenie zbiorów danych w jeden
-* konwersją adnotacji, np. poliglonu na maskę
-* dzielenie zbioru na dowolne podzbiory np. `train`, `val`, `test`
-
-Aby móc wykorzystywać udostępnione zbiory należy wykorzystać udostępnione [COCO API](https://github.com/cocodataset/cocoapi), które wykorzystuje wcześniej wspomniany projekt datumaro. API można wykorzystywać za pomocą Lua, Matlaba oraz Pythona. Do testów został wykorzystany Python, czego rezultat można ujrzeć poniżej. Nie obyło się bez problemów, użytkowników windows'a zalecamy do zerknięcia do [tego repozytorium](https://github.com/philferriere/cocoapi)
-
-![python-api](coco/pyhon-api.gif)
-
-
-
-- ***OCENA - 4/5***
-
-  Bogaty zbiór zdjęć z załączonymi adnotacjami 80 różnych kategorii. Dołączone narzędzie *datamuro* ma w pełni wystarczające możliwości. Ocena obniżona ponieważ, dokumentacja mogła by być bogatsza oraz wymagany  jest umiejętność posługiwania się terminalem itd.
-
-- <u>***ZALETY***</u>
-
-  - duży zbiór danych ze zdjęciami posiadającymi etykiety
-  - bogate w możliwości narzędzie *datamuro*, które można wykorzystywać w dowolnym projekcie
-
-- <u>***WADY***</u>
-
-  - niezbyt bogata dokumentacja
 
 ### Narzędzia do etykietowania
 1. #### Azure Machine Learning - Data Labeling
@@ -1180,3 +1123,61 @@ Z pośród wszystkich testowanych środowisk, w mojej ocenie, środowisko te cec
    Niestety nie mogliśmy przetestować tej usługi, ponieważ została zablokowana z powodu pandemii.
 
    ![](not-work/google.PNG)
+
+### Zbiory danych
+
+Nie od dziś wiadomo, że algorytmy wykorzystujące głębokie uczenie (ang. deep learning) wymagają dużych zbiorów danych. Z tego powodu warto wspomóc się ogólnodostępnymi bazami zdjęć.
+
+1. #### Coco-Annotator
+
+COCO to zakrojony na szeroką skalę zbiór danych dotyczących wykrywania (ang. *detection*) obiektów, segmentacji (ang. *segmentation*) i podpisywania (ang. *captioning*).
+
+COCO w liczbach:
+
+* 330k zdjęć (>200k z etykietami)
+* 80 kategorii obiektów
+
+Generalnie dostępne zbiory służą do uczenia algorytmów, które można zgłaszać w corocznych konkursach organizowanych przez COCO. Z tego powodu sinieją różne kombinacje zdjęć. Z czego najpopularniejsza to 2017 Train/Val/Test
+
+Zbiory można przeglądać za pomocą [Coco explorer'a](https://cocodataset.org/#explore) przedstawionego niżej:
+
+![coco-explorer](coco/coco-explorer.gif)
+
+Aby móc obsłużyć opracowane zbiory danych powstał projekt [datumaro](https://github.com/openvinotoolkit/datumaro). Poradnik można znaleźć [tutaj]( https://github.com/openvinotoolkit/datumaro/blob/develop/docs/user_manual.md) Umożliwia on między innymi:
+
+* tworzenie projektów
+* odczytywanie, zapisywanie oraz konwersja zbiorów w formatach:
+  * COCO
+  * PASCAL VOD
+  * YOLO
+  * TF Detection API
+  * WIDER Face
+  * MOT sqeuences
+  * MOTS PNG
+  * ImageNet
+  * CamVid
+  * LabelMe
+  * CVAT
+* filtrowanie podzbioru np. ze względu na brak adnotacji określonej klasy
+* łączenie zbiorów danych w jeden
+* konwersją adnotacji, np. poliglonu na maskę
+* dzielenie zbioru na dowolne podzbiory np. `train`, `val`, `test`
+
+Aby móc wykorzystywać udostępnione zbiory należy wykorzystać udostępnione [COCO API](https://github.com/cocodataset/cocoapi), które wykorzystuje wcześniej wspomniany projekt datumaro. API można wykorzystywać za pomocą Lua, Matlaba oraz Pythona. Do testów został wykorzystany Python, czego rezultat można ujrzeć poniżej. Nie obyło się bez problemów, użytkowników windows'a zalecamy do zerknięcia do [tego repozytorium](https://github.com/philferriere/cocoapi)
+
+![python-api](coco/pyhon-api.gif)
+
+
+
+- ***OCENA - 4/5***
+
+  Bogaty zbiór zdjęć z załączonymi adnotacjami 80 różnych kategorii. Dołączone narzędzie *datamuro* ma w pełni wystarczające możliwości. Ocena obniżona ponieważ, dokumentacja mogła by być bogatsza oraz wymagany  jest umiejętność posługiwania się terminalem itd.
+
+- <u>***ZALETY***</u>
+
+  - duży zbiór danych ze zdjęciami posiadającymi etykiety
+  - bogate w możliwości narzędzie *datamuro*, które można wykorzystywać w dowolnym projekcie
+
+- <u>***WADY***</u>
+
+  - niezbyt bogata dokumentacja
