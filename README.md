@@ -27,10 +27,8 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 ***Inne technologie:***
 
 - [Cvat](#Cvat)
-- Label Studio
-- Labelbox
-- [Coco Annotator](#Coco-Annotator)
-- Awesome Data Labeling
+- [Label Studio](#Label Studio)
+- [Labelbox](#Labelbox)
 - [Make-sens](#Make-sens)
 - [Kili Technology](#Kili-Technology)
 - [Yolo_label](#Yolo_label)
@@ -52,13 +50,10 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 |   4   |             Analiza *Azure Machine Learning*             |       do 10.01.20       |     MM     |   X   |
 |   5   |                   Analiza *Yolo_label*                   |       do 10.01.20       |     MM     |   X   |
 |   6   |    Analiza *Awesome Data Labeling - Kili Technology*     |       do 13.01.20       |     MM     |   X   |
-|   7   |                   Analiza *Make-sens*               |       do 15.01.20       |     MM  
-|   x   |  
-|   8   |                      Analiza *CVAT*                      |       do 16.01.20       |     JK     |   x   |
+|   7   |                   Analiza *Make-sens*                    |       do 15.01.20       |     MM     |   X   |
+|   8   |                      Analiza *CVAT*                      |       do 16.01.20       |     JK     |       |
 |   9   |                  Analiza *Label Studio*                  |       do 16.01.20       |     JK     |       |
 |  10   |                    Analiza *Labelbox*                    |       do 16.01.20       |     JK     |       |
-|  11   |                 Analiza *Coco Annotator*                 |       do 16.01.20       |     JK     |   X   |
-|       |                                                          |                         |            |       |
 ### Mini wstęp teoretyczny
 
 Proces tworzenia algorytmu do etykietowania zdjęć można podzielić na etapy:
