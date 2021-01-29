@@ -4,11 +4,19 @@
 
 Projekt zakłada przegląd narzędzi umożliwiających oznaczanie obrazów. Szczególnej uwadze ma zostać poddany Azure Machine Learning Data Labeling. Omówione poniżej narzędzia, mają za zadanie ułatwienie przygotowania zbiorów danych, po przez ich oznaczenie. Zbiór taki może posłużyć następnie do dalszej analizy, zostać wykorzystany w kolejnym narzędziu lub może posłużyć jako zbiór danych dla uczenia sieci.
 
+### TLTR
+
+W przypadku posiadanych $$$, warto rozważyć [Azure Machine Learning - Data Labeling](#Azure-Machine-Learning---Data-Labeling), w przeciwnym razie polecamy [Computer Vision Annotation Tool](#Computer-Vision-Annotation-Tool).
+
 ### Zespół - grupa nr 5 - *gamma*
 
 - [Mateusz Mizio ](https://github.com/miziom ) - MM
 
 - [Jarosław Królik](https://github.com/j-krolik) - JK
+
+### Film promocyjny
+
+[YouTube link](https://l.messenger.com/l.php?u=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DCPh-J5HcXM8%26t%3D135s&h=AT0jIcvhbH6pVXyjyZ887irY_x0_A--H9baUOAkpSmucLfoqUe3BOIOgWCCQpuDcwgIPu4ZARU6nSJWB1V8f_osIVo0b9C8O2pYPTDmIMcq7iT-ojg6lk9BJdc8iYJ_wx6jkKQ)
 
 ### Repozytorium
 
@@ -26,12 +34,12 @@ Repozytorium GitHub - [LINK](https://github.com/miziom/AI-Azure-Project-Image-La
 
 ***Inne technologie:***
 
-- [Cvat](#Cvat)
-- [Label Studio](#Label-Studio)
-- [Labelbox](#Labelbox)
+- [Computer Vision Annotation Tool](#Computer-Vision-Annotation-Tool)
 - [Make-sens](#Make-sens)
 - [Kili Technology](#Kili-Technology)
 - [Yolo_label](#Yolo_label)
+- [Label Studio](#Label-Studio)
+- [Labelbox](#Labelbox)
 - [*Google Cloud AI Platform Data Labeling Service* - niedostępny](#Google-Cloud-AI-Platform-Data-Labeling-Service)
 
 ***Pochodzenie zbiorów danych***
@@ -376,9 +384,7 @@ Formaty adnotacji zdjęć:
      - Multi-label Image Classificatication oraz Instance Segmentation
      - nie ma możliwości powrotu do raz pominiętego obrazu
 
-2. #### CVAT
-
-CVAT (Computer Vison Annotation Tool)
+2. #### Computer Vison Annotation Tool
 
 * jest bezpłatnym, open source narzędziem do adnotacji obrazu oraz  wideo
 * prowadzony przez firmę Intel.
