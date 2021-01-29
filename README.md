@@ -443,12 +443,12 @@ Czynność tą można wykonywać myszką oraz klawiaturą za pomocą skrótów k
 
   * polygon - manual
 
-    <img src="cvat\standard-polygon.gif" alt="standard-bb" style="zoom:150%;" />
+  <img src="cvat\standard-polygon.gif" alt="standard-bb" style="zoom:150%;" />
 
 
   * polygon - AI tool - segmentacja pół-autoatyczna
 
-<img src="cvat\standard-polygon-ai.gif" alt="polygon-AI" style="zoom:150%;" />
+<img src="cvat\standard-polygon-AI.gif" alt="polygon-AI" style="zoom:150%;" />
 
 Wspierane jest również szybka segmentacja podobnych do siebie obrazów, za pomocą zarówno bounding-box jak i polygon.
 
