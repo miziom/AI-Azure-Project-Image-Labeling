@@ -433,8 +433,6 @@ Aby móc wykorzystywać udostępnione zbiory należy wykorzystać udostępnione 
      - Multi-label Image Classificatication oraz Instance Segmentation
      - nie ma możliwości powrotu do raz pominiętego obrazu
 
-
-
 2. #### CVAT
 
 CVAT (Computer Vison Annotation Tool)
@@ -463,7 +461,7 @@ Więcej informacji można znaleźć [tutaj](https://github.com/openvinotoolkit/c
 | [ImageNet](http://www.image-net.org)                         | X      | X      |
 | [CamVid](http://mi.eng.cam.ac.uk/research/projects/VideoRec/CamVid/) | X      | X      |
 
-##### Wykorzystywanie
+##### Instalacja
 
 Interfejs użytkownika jest oparty o interfejs webowy.  Do dyspozycji mamy dwie możliwości:
 
@@ -477,28 +475,87 @@ Do dyspozycji również mamy REST API, którego dokumentacje można znaleźć po
 
 Sam proces utworzenia projektu oraz zadań, jest bardzo prosty. Co widać na poniższym gifie.
 
-![cvat generation project](cvat/gen-project.gif)
+<img src="cvat/gen-project.gif" alt="cvat generation project" style="zoom:150%;" />
 
-##### Dodawanie adnotacji
+**Klasyfikacja obrazów**
 
-Czynność tą można wykonywać myszką lub klawiaturą za pomocą skrótów klawiszowych. Aby poznać skróty klawiszowe należy nacisnąć F1.
+CVAT wspiera klasyfikacje obrazów, w tym celu powstał tryb *tag annotation*. W tym trybie przeglądamy pojedyncze zdjęcia oraz klasyfikujemy za pomocą klawiszy klawiatury od `0` do `9` (każda liczba ma przypisaną inną etykietę). Aby przejść do kolejnego zdjęcia naciskamy `f` lub zaznaczamy opcję *Automatically go to the next frame*.
+
+<img src="cvat/classification.gif" alt="cvat-classification" style="zoom: 150%;" />
+
+##### Segmentacja obrazów
+
+Czynność tą można wykonywać myszką oraz klawiaturą za pomocą skrótów klawiszowych. Aby poznać skróty klawiszowe należy nacisnąć F1.
 
 * standardowe dodawanie etykiet
 
   * bounding box
-    ![standard-bb](cvat/standard-bb.gif)
+    <img src="cvat/standard-bb.gif" alt="standard-bb" style="zoom: 150%;" />
 
   * polygon - manual
 
-    ![standard-bb](cvat\standard-polygon.gif)
+    <img src="cvat\standard-polygon.gif" alt="standard-bb" style="zoom:150%;" />
 
 
-  * polygon - AI tool
+  * polygon - AI tool - segmentacja pół-autoatyczna
 
-![standard-bb](cvat/standard-polygon-ai.gif)
+<img src="cvat/standard-polygon-ai.gif" alt="standard-bb" style="zoom:150%;" />
 
-* tag annotation - tagowanie zdjęć
-  ![standard-bb](cvat/tag-annotation.gif)
+Wspierane jest również szybka segmentacja podobnych do siebie obrazów, za pomocą zarówno bounding-box jak i polygon.
+
+<img src="cvat/segmentation-trace.gif" alt="standard-bb" style="zoom:150%;" />
+
+##### Deep learning
+
+Dodatkowo wspierane jest wykorzystywanie pewnych modeli głębokiego uczenia. Algorytmy te zostały przedstawione w tabeli poniżej. 
+
+Warto również wspomnieć, że istnieje środowisko [Openpanel](https://github.com/onepanelio/core), które łączy [CVAT](https://github.com/opencv/cvat) z [JupyterLab](https://github.com/jupyterlab/jupyterlab) oraz [NNI (Neural Network Intelligence)](https://github.com/microsoft/nni)
+
+| Name                                                                                                    | Type       | Framework  | CPU | GPU |
+| ------------------------------------------------------------------------------------------------------- | ---------- | ---------- | --- | --- |
+| [Deep Extreme Cut](/serverless/openvino/dextr/nuclio)                                                   | interactor | OpenVINO   | X   |
+| [Faster RCNN](/serverless/tensorflow/faster_rcnn_inception_v2_coco/nuclio)                              | detector   | TensorFlow | X   | X   |
+| [Mask RCNN](/serverless/openvino/omz/public/mask_rcnn_inception_resnet_v2_atrous_coco/nuclio)           | detector   | OpenVINO   | X   |
+| [YOLO v3](/serverless/openvino/omz/public/yolo-v3-tf/nuclio)                                            | detector   | OpenVINO   | X   |
+| [Text detection v4](/serverless/openvino/omz/intel/text-detection-0004/nuclio)                          | detector   | OpenVINO   | X   |
+| [Semantic segmentation for ADAS](/serverless/openvino/omz/intel/semantic-segmentation-adas-0001/nuclio) | detector   | OpenVINO   | X   |
+| [Mask RCNN](/serverless/tensorflow/matterport/mask_rcnn/nuclio)                                         | detector   | TensorFlow | X   |
+| [Object reidentification](/serverless/openvino/omz/intel/person-reidentification-retail-300/nuclio)     | reid       | OpenVINO   | X   |
+
+##### REST API
+
+CVAT posiada REST API, którego dokumentację można znaleźć [tutaj](https://cvat.org/api/swagger/). W przypadku lokalnej instancji, dokumentacje można znaleźć pod adresem `<cvat_origin>/api/swagger` (domyślnie: `localhost:8080/api/swagger`).
+
+##### Kooperacja
+
+Możliwa jest kooperacja poprzez przypisywanie etykietowania oraz recenzowania innym użytkownikom.
+
+<img src="cvat/assign.gif" alt="standard-bb" style="zoom:150%;" />
+
+- ***OCENA DZIAŁANIA - 4.25/5***
+
+     Jest to dobry edytor, posiadający przyjazny interfejs oraz przydatne skróty klawiszowe. Możliwe jest również kooperacja. Wspiera również deep learning (nie było testowane).
+
+------
+
+   - ***<u>WNIOSKI</u>***
+     - Łatwy w obsłudze, nawet dla osób "niewtajemniczonych"
+     - Posiada tryby emitowania, które nie posiadają inne programu
+     - Bardzo rozbudowany deep learning (nie testowany)
+     - Środowisko współpracuje z innymi podobnymi środowiskami - obsługa wielu rozszerzeń, współpraca z *Openpanel*
+   - <u>***ZALETY***</u>
+
+     - bezpłatne, ciągle rozwijane narzędzie
+     - obsługa wielu formatów
+     - posiada przydatną, niespotykaną funkcję przenoszenia konturu (podczas segmentacji) na kolejne zdjęcie (znaczne przyspieszenie pracy)
+     - możliwość współpracy wielu osób
+     - dostępna wersja demo, aby móc oszacować przydatność narzędzia
+     - zarządzanie projektem i śledzenie postępów
+   - <u>***WADY***</u>
+
+     - w przypadku chęci kooperacji bez własnej docer'owej instacji, należy liczyć się z pewnymi ograniczeniami
+     - brak grupowej klasyfikacji z wykorzystaniem AI, którą posiada Azure Machine Learning - Data Labeling
+     - słabo rozwinięta kontrybucja, do etykietowania danego zbioru, można przypisać jedną osobę
 
 3. #### Yolo_label
 
